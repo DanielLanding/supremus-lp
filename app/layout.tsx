@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Script from "next/script"
 import { Montserrat, Dancing_Script } from "next/font/google"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import "./globals.css"
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${montserrat.variable} ${dancingScript.variable} ${montserrat.className}`}>
         <SmoothScroll />
         {children}
-        <Script src="https://player.vimeo.com/api/player.js" strategy="lazyOnload" />
       </body>
     </html>
   )
