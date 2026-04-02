@@ -1,6 +1,8 @@
+import Image from "next/image"
 import { MarqueeCarousel } from "@/components/marquee-carousel"
 import { WistiaVideo } from "@/components/wistia-video"
 import { MobileNav } from "@/components/mobile-nav"
+import { VimeoEmbed } from "@/components/vimeo-embed"
 
 const TICKETS = [
   {
@@ -102,7 +104,7 @@ const TESTIMONIALS = [
   },
 ]
 
-export default function GigantesPage() {
+export default function SupremusPage() {
   return (
     <div className="min-h-screen text-white overflow-x-hidden" style={{ fontFamily: "'Montserrat', sans-serif" }}>
       {/* ─── MOBILE MENU (fora da navbar para evitar stacking context) ─── */}
@@ -112,8 +114,7 @@ export default function GigantesPage() {
       <header className="navbar fixed top-0 left-0 right-0 z-50">
         <nav className="max-w-[1400px] mx-auto px-6 lg:px-10 py-4 lg:py-5 flex items-center justify-between lg:justify-center gap-8 lg:gap-12">
           <a href="#hero" className="shrink-0 navbar-logo-text">
-            <span className="navbar-logo-gold">GIGANTES</span>{" "}
-            <span className="text-white">2026</span>
+            <span className="navbar-logo-gold">SUPREMUS</span>
           </a>
           <div className="hidden lg:flex items-center gap-8">
             {[
@@ -136,48 +137,55 @@ export default function GigantesPage() {
         {/* ─── HERO ─── */}
         <section
           id="hero"
-          className="hero-bg relative flex flex-col pt-20 md:pt-24 pb-4 overflow-hidden"
-          style={{ minHeight: "75vh" }}
+          className="hero-bg relative flex flex-col pt-16 md:pt-20 pb-4 overflow-hidden"
+          style={{ minHeight: "100vh" }}
         >
           {/* Suavização apenas na base para a divisão de seções */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a1628] pointer-events-none z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a1a10] pointer-events-none z-0" />
           {/* Mobile: gradiente extra para legibilidade sobre a foto */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/30 via-transparent to-[#0a1628]/90 pointer-events-none z-0 md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1a10]/30 via-transparent to-[#0a1a10]/90 pointer-events-none z-0 md:hidden" />
 
           {/* Content */}
           <div className="flex-1 flex flex-col items-center justify-end md:justify-center text-center px-4 md:px-6 py-8 md:py-12 relative z-10">
-            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-5 py-7 md:px-12 md:py-14 w-full max-w-[950px] shadow-lg">
+            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-5 py-5 md:px-14 md:py-8 w-full max-w-[1100px] shadow-lg">
               <img
-                src="/logo-gigantes.svg"
-                alt="Gigantes do Mercado Imobiliário"
-                className="w-52 md:w-80 mb-5 md:mb-6"
+                src="/images/Supremus_logo.png"
+                alt="Supremus do Mercado Imobiliário"
+                className="w-52 md:w-80 mb-3 md:mb-4"
               />
-              <div className="flex items-center gap-2 md:gap-3 text-[12px] md:text-[16px] text-white/90 mb-5 md:mb-6 font-medium">
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" className="shrink-0 opacity-80">
-                  <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-                  <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-                <span className="tracking-wide">Balneário Camboriú | Setembro de 2026</span>
+              <div className="flex items-center gap-2 md:gap-3 text-[12px] md:text-[16px] text-white/90 mb-3 md:mb-4 font-medium">
+                <span className="tracking-wide uppercase">Mentoria Executiva - Com Altemir Rocha</span>
               </div>
-              <h1 className="text-[18px] md:text-[27px] lg:text-[32px] font-black uppercase leading-[1.35] md:leading-[1.4] text-white text-center max-w-[850px] mb-6 md:mb-8">
-                O EVENTO QUE ENTREGA{" "}
+              <h1 className="text-[18px] md:text-[27px] lg:text-[32px] font-black uppercase leading-[1.35] md:leading-[1.4] text-white text-center max-w-[850px] mb-3 md:mb-4">
+                ESTRUTURE SUA OPERAÇÃO COM QUEM JÁ VENDEU MAIS DE{" "}
                 <span className="text-[#f4c264]">
-                  A MAIOR INTELIGÊNCIA DE CONVERSÃO DE VENDAS
+                  R$ 2 BILHÕES
                 </span>{" "}
-                DO MERCADO IMOBILIÁRIO.
+                EM IMÓVEIS
               </h1>
+              <p className="text-white/70 text-[13px] md:text-[16px] text-center max-w-[650px] mb-4 md:mb-5 leading-relaxed">
+                12 MESES COM ALTEMIR ROCHA DENTRO DA SUA OPERAÇÃO. MENOS TEORIA. MAIS DIREÇÃO, AJUSTE E CRESCIMENTO REAL.
+              </p>
               <a
                 href="#ingressos"
                 className="bg-[#f4c264] hover:bg-[#eab34e] text-black rounded-xl font-bold transition-colors block w-full max-w-[550px] text-center p-3 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide"
               >
-                Resgatar 50% de desconto
+                QUERO A MENTORIA SUPREMUS
               </a>
             </div>
+            <img
+              src="/images/logo-ibraciv.svg"
+              alt="IBRACIV"
+              className="h-10 md:h-14 mt-5 md:mt-7 brightness-0 invert opacity-80"
+            />
           </div>
+
         </section>
 
         {/* ─── CAROUSEL DE PARTICIPANTES ─── */}
-        <MarqueeCarousel />
+        <div className="relative z-10 -mt-24 md:-mt-32">
+          <MarqueeCarousel />
+        </div>
 
         {/* ─── SOBRE O EVENTO ─── */}
         <section id="sobre" className="sobre-section py-20 md:py-28">
@@ -196,24 +204,30 @@ export default function GigantesPage() {
               {/* Left — heading */}
               <div className="md:w-1/2 shrink-0">
                 <p className="sobre-label uppercase mb-4">
-                  O QUE É O GIGANTES DO MERCADO IMOBILIÁRIO?
+                  O QUE É O SUPREMUS DO MERCADO IMOBILIÁRIO?
                 </p>
                 <h2 className="sobre-heading font-black leading-tight">
-                  O evento que transforma corretores e imobiliárias, nas maiores autoridades de
-                  seus mercados dentro e fora do Brasil!
+                  A mentoria executiva que organiza, estrutura e eleva sua operação ao nível de uma máquina de vendas com autoridade, processos e equipe de alta performance
                 </h2>
               </div>
 
               {/* Right — paragraphs */}
               <div className="flex-1">
                 <p className="sobre-lead text-lg mb-5 leading-relaxed font-semibold">
-                  São dois dias de treinamento com o maior gerador de corretores
-                  de sucesso do Brasil, desenhado exclusivamente para corretores,
-                  gerentes de equipes de vendas e donos de imobiliária. São dois
-                  dias inteiros de TREINAMENTO com técnicas de vendas,
-                  fortalecimento emocional para vendas e gestão de clientes,
-                  formar equipes de alta performance, e fazer cada corretor da
-                  sua imobiliária FECHAR VENDAS TODOS OS MESES.
+                  Na Supremus, o Altemir Rocha entra diretamente na sua operação e começa a mexer no que realmente impacta o seu faturamento.
+                </p>
+                <p className="sobre-lead text-lg mb-5 leading-relaxed font-semibold">
+                  Já na primeira reunião, você sai com ajustes práticos e decisões que começam a refletir no resultado.
+                </p>
+                <p className="sobre-lead text-lg mb-5 leading-relaxed font-semibold">
+                  Ao longo dos 12 meses, sua operação é organizada, estruturada e direcionada para crescer com consistência.
+                </p>
+                <p className="sobre-lead text-lg mb-5 leading-relaxed font-semibold">
+                  Sem teoria de guru.<br />
+                  Sem tentativa.
+                </p>
+                <p className="sobre-lead text-lg leading-relaxed font-semibold">
+                  É método que funciona, treinamento aplicado e acompanhamento próximo.
                 </p>
               </div>
             </div>
@@ -221,12 +235,13 @@ export default function GigantesPage() {
 
           {/* 4 fotos edge-to-edge */}
           <div className="mt-12 sobre-fotos-row">
-            {["/altemiraoLadoPessoas", "/pessoas.png", "/pessoa2", "/pessoas3.png"].map((src, i) => (
+            {["/altemiraoLadoPessoas", "/pessoas.webp", "/pessoa2", "/pessoas3.webp"].map((src, i) => (
               <div key={i} className="sobre-foto-item">
                 <img
                   src={src}
                   alt={`Participantes do evento ${i + 1}`}
                   className="sobre-foto-img"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -250,10 +265,10 @@ export default function GigantesPage() {
         </section>
 
         {/* ─── EDIÇÃO 2026 — Vídeo com gradiente azul ─── */}
-        <section id="edicao" className="edicao-section pt-[140px] md:pt-[230px] overflow-hidden relative flex flex-col justify-between z-20" style={{ marginTop: "-130px", minHeight: "auto", maxHeight: "none" }}>
-          {/* WAVE (Inside top - White to Blue transition) */}
+        <section id="edicao" className="edicao-section pt-[140px] md:pt-[290px] overflow-hidden relative flex flex-col justify-center z-20 -mt-[120px] md:-mt-[190px] min-h-0 md:min-h-screen">
+          {/* WAVE (Inside top - White to Green transition) */}
           <div className="absolute left-0 right-0 w-full pointer-events-none z-20" style={{ top: "-1px", transform: "scaleY(-1)" }}>
-            <svg viewBox="0 0 1440 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" style={{ height: "130px" }}>
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="w-full block h-[60px] md:h-[130px]">
               <path
                 d="M0,40 C600,150 900,0 1440,60 L1440,150 L0,150 Z"
                 fill="#f5f5f7"
@@ -264,40 +279,40 @@ export default function GigantesPage() {
           {/* Blurred Background Image + Overlay Azul */}
           <div className="absolute inset-0 z-0 pointer-events-none -mt-10">
             <img
-              src="/images/about-1.png"
+              src="/images/about-1.webp"
               alt="Fundo Edição"
               className="w-full h-full object-cover blur-[50px] md:blur-[70px] scale-110 opacity-70"
+              loading="lazy"
             />
-            <div className="absolute inset-0 bg-[#0a1628] mix-blend-color opacity-70" />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/85 via-[#0a1628]/60 to-[#122340]/90" />
+            <div className="absolute inset-0 bg-[#0a1a10] mix-blend-color opacity-70" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0a1a10]/85 via-[#0a1a10]/60 to-[#12301a]/90" />
           </div>
 
           {/* Luzes desfocadas adicionais */}
-          <div className="absolute top-[10%] -left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#0693e3]/20 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0" />
+          <div className="absolute top-[10%] -left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#1a8a4a]/20 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0" />
           <div className="absolute bottom-[10%] -right-[10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#D4A843]/15 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0" />
 
           {/* Texts (Reduzidos para caber perfeitamente com o vídeo na tela) */}
-          <div className="max-w-[1400px] w-full mx-auto text-center flex flex-col items-center relative z-10 px-6 mb-6 shrink-0">
-            <h2 className="text-2xl md:text-4xl lg:text-[2.8rem] font-black mb-3 leading-tight">
-              <span className="text-white">Gigantes do Mercado</span><br />
-              <span className="text-white">Imobiliário</span>{" "}
-              <span className="gold-shiny">Edição 2026</span>
+          <div className="max-w-[1400px] w-full mx-auto text-center flex flex-col items-center relative z-10 px-6 mb-4 md:mb-6 shrink-0" style={{ transform: "translateY(-58px)" }}>
+            <h2 className="text-3xl md:text-4xl lg:text-[2.8rem] font-black mb-2 md:mb-3 leading-tight">
+              <span className="gold-shiny">SUPREMUS</span>
             </h2>
-            <p className="text-white/70 text-xs md:text-sm uppercase tracking-wider font-semibold max-w-2xl mx-auto">
-              O EVENTO QUE ENTREGA A MAIOR INTELIGÊNCIA DE CONVERSÃO DE VENDAS DO MERCADO IMOBILIÁRIO.
+            <p className="text-white/70 text-[11px] md:text-sm uppercase tracking-wider font-semibold max-w-2xl mx-auto px-4">
+              O ponto onde sua operação começa a crescer de verdade
             </p>
           </div>
 
-          {/* Vídeo - Limitado em largura e altura para não empurrar o texto para fora da tela */}
-          <div className="w-full max-w-[1550px] mx-auto px-4 md:px-10 flex flex-1 flex-col justify-end relative z-10 pb-0 overflow-hidden">
-            <div className="w-full overflow-hidden bg-transparent mb-[-2px]">
-              <WistiaVideo videoId="hwa2nywg4h" className="w-full" />
-            </div>
+          {/* Vídeo Vimeo */}
+          <div className="w-full max-w-[1180px] mx-auto px-3 md:px-10 flex md:flex-1 flex-col justify-end relative z-10 pb-4 md:pb-0 overflow-hidden">
+            <VimeoEmbed
+              videoUrl="https://player.vimeo.com/video/1179439269?h=6f631d6963&badge=0&autopause=0&player_id=0&app_id=58479"
+              title="GMI 2026 - Patrocínio"
+            />
           </div>
         </section>
 
         {/* ─── RESULTADOS + DEPOIMENTOS ─── */}
-        <section id="depoimentos" className="relative py-24 md:py-32 px-6 overflow-hidden bg-[#f5f5f7]">
+        <section id="depoimentos" className="relative pt-24 md:pt-32 pb-40 md:pb-52 px-6 overflow-hidden bg-[#f5f5f7]">
           <div className="max-w-[1200px] mx-auto relative z-10">
             {/* Header: título + texto lado a lado */}
             <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16 mb-14">
@@ -312,7 +327,7 @@ export default function GigantesPage() {
               <div className="md:w-1/2 md:pt-8">
                 <p className="text-gray-500 text-[15px] md:text-base leading-relaxed">
                   Somado o faturamento total dos nossos alunos podemos chegar facilmente a marca de
-                  <strong className="text-gray-800"> +1 de Bilhão</strong> de reais em vendas no mercado imobiliário. Venha conhecer o GIGANTES 2026.
+                  <strong className="text-gray-800"> +1 de Bilhão</strong> de reais em vendas no mercado imobiliário. Venha conhecer o SUPREMUS.
                 </p>
               </div>
             </div>
@@ -335,20 +350,21 @@ export default function GigantesPage() {
         </section>
 
         {/* ─── EXPERIência ALTO PADRÃO ─── */}
-        <section id="experiencia" className="experiencia-section flex items-center pt-[100px] md:pt-[140px] pb-16 md:pb-20 px-4 md:px-6 relative overflow-hidden z-20" style={{ marginTop: "-100px", minHeight: "auto" }}>
+        <section id="experiencia" className="experiencia-section flex items-center pt-[160px] md:pt-[200px] pb-16 md:pb-20 px-4 md:px-6 relative overflow-hidden z-20 min-h-screen" style={{ marginTop: "-160px" }}>
           {/* Blurred Background Image + Overlay Azul */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <img
-              src="/images/about-1.png"
+              src="/images/about-1.webp"
               alt="Experiência Contexto"
               className="w-full h-full object-cover blur-[80px] md:blur-[40px] scale-125 opacity-80"
+              loading="lazy"
             />
             {/* Color Overlays para tingir de azul e escurecer */}
-            <div className="absolute inset-0 bg-[#0a1628] mix-blend-color opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/90 via-[#0a1628]/70 to-[#122340]/90" />
+            <div className="absolute inset-0 bg-[#0a1a10] mix-blend-color opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0a1a10]/90 via-[#0a1a10]/70 to-[#12301a]/90" />
           </div>
 
-          {/* WAVE (Inside - White to Blue transition) */}
+          {/* WAVE (Inside - White to Green transition) */}
           <div className="absolute left-0 right-0 w-full pointer-events-none z-10" style={{ top: "-1px", transform: "scaleY(-1)" }}>
             <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" style={{ height: "auto" }}>
               <path
@@ -360,7 +376,7 @@ export default function GigantesPage() {
 
           {/* Luzes desfocadas */}
           <div className="absolute top-[-5%] -right-[5%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#D4A843]/15 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0" />
-          <div className="absolute bottom-[-10%] -left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#0693e3]/20 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0" />
+          <div className="absolute bottom-[-10%] -left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#1a8a4a]/20 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0" />
 
           <div className="max-w-[1300px] w-full mx-auto relative z-10">
             <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-center">
@@ -372,6 +388,7 @@ export default function GigantesPage() {
                     src="/images/design-1.webp"
                     alt="Mentoria Sala"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 
@@ -381,6 +398,7 @@ export default function GigantesPage() {
                     src="/iate"
                     alt="Iate em Alto Mar"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
 
                   {/* Golden Seal - Fixado no canto superior esquerdo da imagem do Iate */}
@@ -389,6 +407,7 @@ export default function GigantesPage() {
                       src="/images/experiencia-boat.webp"
                       alt="Selo Experiência"
                       className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -415,6 +434,7 @@ export default function GigantesPage() {
                     src="/images/design-2-1.webp"
                     alt="Altemir Rocha"
                     className="w-16 h-16 rounded-full object-cover shrink-0"
+                    loading="lazy"
                   />
                   <div>
                     <p className="text-white/70 text-sm md:text-[15px] leading-relaxed">
@@ -445,16 +465,16 @@ export default function GigantesPage() {
         </div>
 
         {/* ─── INGRESSOS / PLANOS ─── */}
-        <section id="ingressos" className="relative py-24 md:py-32 px-6 overflow-hidden" style={{ background: "linear-gradient(180deg, #0a1628 0%, #0d1a30 50%, #0a1628 100%)" }}>
+        <section id="ingressos" className="relative py-24 md:py-32 px-6 overflow-hidden" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1c12 50%, #0a1a10 100%)" }}>
           {/* Luzes desfocadas */}
           <div className="absolute top-[-5%] -left-[5%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#D4A843]/8 rounded-full blur-[120px] md:blur-[180px] pointer-events-none z-0" />
-          <div className="absolute bottom-[10%] -right-[5%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#0693e3]/10 rounded-full blur-[120px] md:blur-[180px] pointer-events-none z-0" />
+          <div className="absolute bottom-[10%] -right-[5%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#1a8a4a]/10 rounded-full blur-[120px] md:blur-[180px] pointer-events-none z-0" />
           <div className="absolute top-[50%] left-[40%] w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-[#D4A843]/5 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0" />
 
           <div className="max-w-[1200px] mx-auto relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl lg:text-[2.8rem] font-black text-white leading-tight mb-4">
-                Escolha seu passaporte e garanta<br />sua vaga no GIGANTES 2026
+                Escolha seu plano e garanta<br />sua vaga no SUPREMUS
               </h2>
               <p className="text-white/40 text-sm md:text-base italic">
                 Os preços são promocionais e por tempo limitado.
@@ -470,13 +490,13 @@ export default function GigantesPage() {
                 const cardClass = isPremium
                   ? "border-2 border-[#D4A843]/40 bg-[#050505]/70 backdrop-blur-[20px] backdrop-saturate-[120%]"
                   : isMid
-                    ? "border border-[#D4A843]/30 bg-gradient-to-b from-[#111827] to-[#0c1220]"
-                    : "border border-white/10 bg-[#0c1625]/80";
+                    ? "border border-[#D4A843]/30 bg-gradient-to-b from-[#111e14] to-[#0c1810]"
+                    : "border border-white/10 bg-[#0c1a10]/80";
 
                 const titleClass = isPremium ? "gold-shiny" : isMid ? "text-white" : "text-white";
 
                 const btnClass = isPremium
-                  ? "bg-[#D4A843] text-[#0a1628] hover:bg-[#e0b44f] shadow-[0_4px_20px_rgba(212,168,67,0.3)]"
+                  ? "bg-[#D4A843] text-[#0a1a10] hover:bg-[#e0b44f] shadow-[0_4px_20px_rgba(212,168,67,0.3)]"
                   : isMid
                     ? "border border-white/30 text-white hover:border-white/50 hover:bg-white/5 bg-transparent"
                     : "border border-white/20 text-white/80 hover:border-white/40 hover:text-white bg-transparent";
@@ -550,6 +570,7 @@ export default function GigantesPage() {
               src="/images/experiencia-dsc.webp"
               alt="Plateia do evento"
               className="w-full h-full object-cover origin-center"
+              loading="lazy"
             />
           </div>
 
@@ -584,7 +605,7 @@ export default function GigantesPage() {
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
-                  TIRAR DÚVIDAS SOBRE O GIGANTES
+                  TIRAR DÚVIDAS SOBRE O SUPREMUS
                 </a>
               </div>
             </div>
@@ -595,7 +616,7 @@ export default function GigantesPage() {
         <section className="relative overflow-hidden bg-[#050505] min-h-[80vh]">
           {/* Luzes desfocadas no background preto */}
           <div className="absolute top-[15%] right-[5%] w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-[#D4A843]/8 rounded-full blur-[120px] md:blur-[180px] pointer-events-none z-0" />
-          <div className="absolute bottom-[20%] right-[30%] w-[200px] md:w-[350px] h-[200px] md:h-[350px] bg-[#0693e3]/10 rounded-full blur-[100px] md:blur-[160px] pointer-events-none z-0" />
+          <div className="absolute bottom-[20%] right-[30%] w-[200px] md:w-[350px] h-[200px] md:h-[350px] bg-[#1a8a4a]/10 rounded-full blur-[100px] md:blur-[160px] pointer-events-none z-0" />
           <div className="absolute top-[60%] right-[10%] w-[150px] md:w-[250px] h-[150px] md:h-[250px] bg-[#D4A843]/6 rounded-full blur-[80px] md:blur-[120px] pointer-events-none z-0" />
 
           <div className="flex flex-col md:flex-row items-stretch min-h-0 md:min-h-[80vh]">
@@ -606,6 +627,7 @@ export default function GigantesPage() {
                 alt="Altemir Rocha"
                 className="w-full h-full object-cover object-top"
                 style={{ minHeight: "350px" }}
+                loading="lazy"
               />
               {/* Gradiente sutil na borda direita da foto para fundir com o preto */}
               <div className="hidden md:block absolute inset-y-0 right-0 w-[80px] bg-gradient-to-l from-[#050505] to-transparent" />

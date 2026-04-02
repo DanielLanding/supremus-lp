@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Montserrat, Dancing_Script } from "next/font/google"
-import { CursorProvider } from "@/components/cursor-provider"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import "./globals.css"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700", "800", "900"],
   variable: "--font-montserrat",
 })
 
@@ -26,10 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR">
       <body className={`${montserrat.variable} ${dancingScript.variable} ${montserrat.className}`}>
-        <CursorProvider>
-          <SmoothScroll />
-          {children}
-        </CursorProvider>
+        <SmoothScroll />
+        {children}
+        <Script src="https://player.vimeo.com/api/player.js" strategy="lazyOnload" />
       </body>
     </html>
   )

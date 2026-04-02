@@ -13,7 +13,7 @@
   }
 
   body {
-    background-color: #0a1628;
+    background-color: #0a1a10;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -24,12 +24,12 @@
 
 /* ─── Color palette variables ─── */
 :root {
-  --navy-dark: #0a1628;
-  --navy-mid: #0f1d32;
-  --navy-light: #162a4a;
+  --navy-dark: #0a1a10;
+  --navy-mid: #0f2214;
+  --navy-light: #163824;
   --gold: #D4A843;
   --gold-light: #e8c36a;
-  --blue-accent: #0693e3;
+  --blue-accent: #1a8a4a;
   --white: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.6);
   --text-dimmed: rgba(255, 255, 255, 0.4);
@@ -37,7 +37,7 @@
 
 /* ─── Navbar ─── */
 .navbar {
-  background: linear-gradient(180deg, rgba(8, 18, 35, 0.95) 0%, rgba(8, 18, 35, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(8, 22, 12, 0.95) 0%, rgba(8, 22, 12, 0.85) 100%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid rgba(212, 168, 67, 0.25);
@@ -113,6 +113,16 @@
   position: relative;
 }
 
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 50, 20, 0.45) 0%, rgba(10, 50, 20, 0.35) 50%, rgba(10, 50, 20, 0.5) 100%);
+  mix-blend-mode: hue;
+  pointer-events: none;
+  z-index: 0;
+}
+
 @media (max-width: 768px) {
   .hero-bg {
     background-image: url('/images/a1.webp');
@@ -126,9 +136,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10, 22, 40, 0.35) 0%,
-    rgba(10, 22, 40, 0.45) 50%,
-    rgba(10, 22, 40, 0.75) 100%
+    rgba(10, 26, 16, 0.35) 0%,
+    rgba(10, 26, 16, 0.45) 50%,
+    rgba(10, 26, 16, 0.75) 100%
   );
   pointer-events: none;
 }
@@ -237,7 +247,7 @@
 }
 
 .carousel-wrapper {
-  background: var(--navy-dark);
+  background: transparent;
   position: relative;
   overflow: hidden;
   padding: 2rem 0 3rem;
@@ -354,7 +364,7 @@
 
 /* ─── Edição / Video Section ─── */
 .edicao-section {
-  background: linear-gradient(180deg, #1a2d4d 0%, #0f1d32 40%, #0a1628 100%);
+  background: linear-gradient(180deg, #1a3928 0%, #0f2214 40%, #0a1a10 100%);
   position: relative;
 }
 
@@ -375,7 +385,7 @@
 
 /* ─── Experiência Alto Padrão ─── */
 .experiencia-section {
-  background: linear-gradient(135deg, #0f1d32 0%, #162a4a 30%, #1a3358 50%, #0f1d32 100%);
+  background: linear-gradient(135deg, #0f2214 0%, #163824 30%, #1a4530 50%, #0f2214 100%);
   position: relative;
   overflow: hidden;
 }
@@ -387,7 +397,7 @@
   right: 0;
   width: 60%;
   height: 80%;
-  background: radial-gradient(ellipse at 80% 50%, rgba(6, 147, 227, 0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 80% 50%, rgba(26, 138, 74, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -536,7 +546,7 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10, 22, 40, 0.3) 0%,
+    rgba(10, 26, 16, 0.3) 0%,
     rgba(245, 245, 247, 0.6) 50%,
     rgba(245, 245, 247, 0.95) 100%
   );

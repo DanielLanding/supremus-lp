@@ -64,7 +64,7 @@ export function MobileNav() {
           bottom: 0,
           zIndex: 99991,
           width: 300,
-          backgroundColor: "#060d1a",
+          backgroundColor: "#060d0a",
           borderLeft: open ? "1px solid rgba(212, 168, 67, 0.15)" : "none",
           boxShadow: open ? "-20px 0 60px rgba(0, 0, 0, 0.7)" : "none",
           display: "flex",
@@ -85,8 +85,7 @@ export function MobileNav() {
           }}
         >
           <span style={{ fontWeight: 900, fontSize: "1.2rem", letterSpacing: "0.03em" }}>
-            <span style={{ color: "#D4A843" }}>GIGANTES</span>{" "}
-            <span style={{ color: "#ffffff" }}>2026</span>
+            <span style={{ color: "#D4A843" }}>SUPREMUS</span>
           </span>
           <button
             type="button"
