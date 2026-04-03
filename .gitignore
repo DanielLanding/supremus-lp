@@ -1,4 +1,7 @@
 .next
+/.next/dev
+.next/dev
+.next\dev
 node_modules
 dist
 .claude

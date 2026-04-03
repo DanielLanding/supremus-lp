@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* ─── Modal blur ─── */
+body.modal-open > *:not([data-modal-overlay]) {
+  filter: blur(6px) brightness(0.6);
+  transition: filter 0.25s ease;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 /* ─── Base reset ─── */
 @layer base {
   *,

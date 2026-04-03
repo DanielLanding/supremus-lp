@@ -3,6 +3,7 @@ import { MarqueeCarousel } from "@/components/marquee-carousel"
 import { WistiaVideo } from "@/components/wistia-video"
 import { MobileNav } from "@/components/mobile-nav"
 import { VimeoEmbed } from "@/components/vimeo-embed"
+import { MentoriaModal } from "@/components/mentoria-modal"
 
 const TICKETS = [
   {
@@ -166,12 +167,7 @@ export default function SupremusPage() {
               <p className="text-white/70 text-[13px] md:text-[16px] text-center max-w-[650px] mb-4 md:mb-5 leading-relaxed">
                 12 MESES COM ALTEMIR ROCHA DENTRO DA SUA OPERAÇÃO. MENOS TEORIA. MAIS DIREÇÃO, AJUSTE E CRESCIMENTO REAL.
               </p>
-              <a
-                href="#ingressos"
-                className="bg-[#f4c264] hover:bg-[#eab34e] text-black rounded-xl font-bold transition-colors block w-full max-w-[550px] text-center p-3 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide"
-              >
-                QUERO A MENTORIA SUPREMUS
-              </a>
+              <MentoriaModal />
             </div>
             <img
               src="/images/logo-ibraciv.svg"
@@ -181,6 +177,7 @@ export default function SupremusPage() {
           </div>
 
         </section>
+        <br />
 
         {/* ─── CAROUSEL DE PARTICIPANTES ─── */}
         <div className="relative z-10 -mt-24 md:-mt-32">
