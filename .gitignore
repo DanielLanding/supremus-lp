@@ -1,5 +1,15 @@
+<<<<<<< fix/logo-ibraciv-responsive-now
 .claude
 
 /.next
 /node_modules
 /dist
+=======
+.next
+/.next/dev
+.next/dev
+.next\dev
+node_modules
+dist
+.claude
+>>>>>>> main

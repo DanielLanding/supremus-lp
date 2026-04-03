@@ -1,6 +1,10 @@
 {
   "app": {
+<<<<<<< fix/logo-ibraciv-responsive-now
     "[project]/Documents/Projects/supremus-lp/app/page": [
+=======
+    "[project]/app/page": [
+>>>>>>> main
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/5d14f12cc996866d-s.p.c70e96ee.woff2"
     ]
