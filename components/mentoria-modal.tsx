@@ -10,17 +10,18 @@ type FormData = {
   q1: string
   q2: string
   q3: string
+  q4: string
 }
 
 const QUESTIONS = [
   {
     id: "q1" as const,
-    pergunta: "Qual é o seu perfil no mercado imobiliário?",
+    pergunta: "Qual é o seu momento atual no mercado imobiliário?",
     opcoes: [
-      "Corretor autônomo",
+      "Corretor querendo empreender",
+      "Investidor querendo empreender neste mercado",
       "Gestor / dono de imobiliária",
       "Gestor de equipe dentro de imobiliária",
-      "Ainda estou começando",
     ],
   },
   {
@@ -35,17 +36,27 @@ const QUESTIONS = [
   },
   {
     id: "q3" as const,
-    pergunta: "Qual é o seu faturamento médio mensal atual?",
+    pergunta: "Qual seu volume médio de venda anual?",
     opcoes: [
-      "Até R$ 10 mil",
-      "De R$ 10 mil a R$ 50 mil",
-      "De R$ 50 mil a R$ 200 mil",
-      "Acima de R$ 200 mil",
+      "Entre 1 e 5 milhões",
+      "Entre 5 e 20 milhões",
+      "Entre 20 e 50 milhões",
+      "Mais que 50 milhões",
+    ],
+  },
+  {
+    id: "q4" as const,
+    pergunta: "Qual o tamanho da sua equipe de corretores hoje?",
+    opcoes: [
+      "Ainda não tenho",
+      "Entre 1 e 5",
+      "Entre 5 e 20",
+      "Mais que 20",
     ],
   },
 ]
 
-const TOTAL_STEPS = 4
+const TOTAL_STEPS = 5
 
 function formatWhatsapp(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 11)
@@ -65,6 +76,7 @@ export function MentoriaModal() {
     q1: "",
     q2: "",
     q3: "",
+    q4: "",
   })
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
 
@@ -72,7 +84,7 @@ export function MentoriaModal() {
     setOpen(true)
     setStep(1)
     setDone(false)
-    setForm({ nome: "", email: "", whatsapp: "", q1: "", q2: "", q3: "" })
+    setForm({ nome: "", email: "", whatsapp: "", q1: "", q2: "", q3: "", q4: "" })
     setErrors({})
     document.body.classList.add("modal-open")
   }
@@ -93,7 +105,7 @@ export function MentoriaModal() {
     return Object.keys(e).length === 0
   }
 
-  function validateQuestion(qId: "q1" | "q2" | "q3") {
+  function validateQuestion(qId: "q1" | "q2" | "q3" | "q4") {
     if (!form[qId]) {
       setErrors({ [qId]: "Selecione uma opção para continuar" })
       return false
@@ -106,8 +118,9 @@ export function MentoriaModal() {
     if (step === 1 && !validateStep1()) return
     if (step === 2 && !validateQuestion("q1")) return
     if (step === 3 && !validateQuestion("q2")) return
-    if (step === 4) {
-      if (!validateQuestion("q3")) return
+    if (step === 4 && !validateQuestion("q3")) return
+    if (step === 5) {
+      if (!validateQuestion("q4")) return
       setDone(true)
       return
     }
@@ -144,14 +157,21 @@ export function MentoriaModal() {
             {/* Gold top bar */}
             <div className="h-1 w-full bg-gradient-to-r from-[#D4A843] via-[#f4c264] to-[#D4A843]" />
 
+            {/* Logo */}
+            <div className="pt-5 flex justify-center">
+              <span className="navbar-logo-text navbar-logo-gold">
+                SUPREMUS
+              </span>
+            </div>
+
             {/* Header */}
-            <div className="px-6 pt-6 pb-4 flex items-center justify-between">
+            <div className="px-6 pt-3 pb-4 flex items-center justify-between">
               <div>
                 <p className="text-[#D4A843] text-xs font-bold tracking-widest uppercase mb-1">
-                  Mentoria Supremus
+                  Aplicação Mentoria Supremus
                 </p>
                 <h2 className="text-white font-black text-xl leading-tight">
-                  {done ? "Recebemos seus dados!" : step === 1 ? "Fale um pouco sobre você" : currentQuestion.pergunta}
+                  {done ? "Aplicação recebida!" : step === 1 ? "Fale um pouco sobre você" : currentQuestion.pergunta}
                 </h2>
               </div>
               <button
@@ -193,7 +213,7 @@ export function MentoriaModal() {
                     </svg>
                   </div>
                   <p className="text-white/70 text-sm leading-relaxed max-w-sm">
-                    Em breve nossa equipe vai entrar em contato pelo WhatsApp para conversar sobre o seu momento e ver se o Supremus faz sentido pra você.
+                    Recebemos sua aplicação. Em breve você receberá um e-mail confirmando sua aplicação, e se aprovado seu perfil nossa equipe entrará em contato com você pelo WhatsApp.
                   </p>
                   <button
                     onClick={closeModal}
@@ -240,7 +260,7 @@ export function MentoriaModal() {
                   </div>
                 </div>
               ) : (
-                /* ── Steps 2-4: Questions ── */
+                /* ── Steps 2-5: Questions ── */
                 <div className="flex flex-col gap-3">
                   {errors[currentQuestion.id] && (
                     <p className="text-red-400 text-xs -mt-1">{errors[currentQuestion.id]}</p>
@@ -293,6 +313,11 @@ export function MentoriaModal() {
                   </button>
                 </div>
               )}
+
+              {/* Ibraciv logo */}
+              <div className="flex justify-center mt-5">
+                <img src="/images/ibraciv_logo.png" alt="Ibraciv" className="h-12 opacity-40" />
+              </div>
             </div>
           </div>
         </div>,

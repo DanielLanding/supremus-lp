@@ -1,15 +1,16 @@
-[00:00:01.400] Server  LOG      ✓ Ready in 926ms
-[00:00:05.179] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:58.080] Server  LOG      ✓ Compiled in 289ms
-[00:01:59.232] Server  LOG      ✓ Compiled in 245ms
-[00:02:44.566] Server  LOG      ✓ Compiled in 288ms
-[00:05:34.191] Server  LOG      ✓ Compiled in 105ms
-[00:05:38.595] Server  LOG      ✓ Compiled in 223ms
-[00:05:46.292] Server  LOG      ✓ Compiled in 164ms
-[00:06:24.347] Server  LOG      ✓ Compiled in 86ms
-[00:06:35.958] Server  LOG      ✓ Compiled in 120ms
-[00:06:36.116] Browser ERROR   uncaughtError: Error: Target container is not a DOM element.
-[00:06:44.709] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:06:44.721] Server  LOG      ✓ Compiled in 59ms
-[00:06:46.114] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:50.953] Browser ERROR   {}
+[00:00:02.010] Server  LOG      ✓ Ready in 1291ms
+[00:03:25.159] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:02.053] Server  LOG      ✓ Compiled in 169ms
+[00:05:43.827] Server  LOG      ✓ Compiled in 112ms
+[00:08:25.765] Server  LOG      ✓ Compiled in 115ms
+[00:08:39.939] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:22.748] Server  LOG      ✓ Compiled in 76ms
+[00:09:26.160] Server  LOG      ✓ Compiled in 56ms
+[00:09:28.462] Server  LOG      ✓ Compiled in 62ms
+[00:09:44.805] Server  LOG      ✓ Compiled in 72ms
+[00:09:46.322] Server  LOG      ✓ Compiled in 90ms
+[00:12:29.816] Server  LOG      ✓ Compiled in 132ms
+[00:12:34.883] Server  LOG      ✓ Compiled in 60ms
+[00:13:05.688] Server  LOG      ✓ Compiled in 110ms
+[00:13:57.384] Server  LOG      ✓ Compiled in 56ms
+[00:14:09.008] Server  LOG      ✓ Compiled in 75ms
