@@ -1,4 +1,5 @@
-.next
-node_modules
-dist
 .claude
+
+/.next
+/node_modules
+/dist
