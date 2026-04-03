@@ -1,3 +1,48 @@
+<<<<<<< fix/logo-ibraciv-responsive-now
+[00:00:01.930] Server  LOG      ✓ Ready in 1533ms
+[00:00:05.190] Server  WARN     ⚠ Cross origin request detected from 192.168.1.104 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:05.262] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:05.343] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.740] Browser ERROR   {}
+[00:00:07.795] Browser ERROR   {}
+[00:00:08.158] Browser ERROR   {}
+[00:00:10.266] Browser ERROR   {}
+[00:00:12.237] Browser ERROR   {}
+[00:00:13.238] Browser ERROR   {}
+[00:02:13.242] Browser ERROR   {}
+[00:02:13.242] Browser ERROR   {}
+[00:02:14.236] Browser ERROR   {}
+[00:02:15.235] Browser ERROR   {}
+[00:02:19.237] Browser ERROR   Cannot read properties of null (reading 'id')
+[00:02:19.237] Browser ERROR   TypeError: Cannot read properties of null (reading 'id')
+    at Object.embed (https://fast.wistia.com/assets/external/E-v1.js:1:116994)
+    at https://fast.wistia.com/assets/external/E-v1.js:1:225034
+    at https://fast.wistia.com/assets/external/E-v1.js:1:234300
+    at https://fast.wistia.com/assets/external/E-v1.js:1:185509
+    at e.tryAndReport (https://fast.wistia.com/assets/external/E-v1.js:1:186265)
+    at e.flush (https://fast.wistia.com/assets/external/E-v1.js:1:185457)
+    at e.go (https://fast.wistia.com/assets/external/E-v1.js:1:186964)
+    at https://fast.wistia.com/assets/external/E-v1.js:1:188553
+    at https://fast.wistia.com/assets/external/E-v1.js:1:130816
+[00:02:19.237] Browser ERROR   Cannot read properties of null (reading 'id')
+[00:02:19.237] Browser ERROR   TypeError: Cannot read properties of null (reading 'id')
+    at Object.embed (https://fast.wistia.com/assets/external/E-v1.js:1:116994)
+    at https://fast.wistia.com/assets/external/E-v1.js:1:225034
+    at https://fast.wistia.com/assets/external/E-v1.js:1:234300
+    at https://fast.wistia.com/assets/external/E-v1.js:1:185509
+    at e.tryAndReport (https://fast.wistia.com/assets/external/E-v1.js:1:186265)
+    at e.flush (https://fast.wistia.com/assets/external/E-v1.js:1:185457)
+    at e.go (https://fast.wistia.com/assets/external/E-v1.js:1:186964)
+    at https://fast.wistia.com/assets/external/E-v1.js:1:188553
+    at https://fast.wistia.com/assets/external/E-v1.js:1:130816
+[00:02:24.239] Browser ERROR   {}
+[00:02:25.238] Browser ERROR   {}
+[00:04:04.235] Browser ERROR   {}
+[00:04:05.235] Browser ERROR   {}
+[00:04:59.239] Browser ERROR   {}
+[00:05:00.236] Browser ERROR   {}
+=======
 [00:00:02.010] Server  LOG      ✓ Ready in 1291ms
 [00:03:25.159] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [00:05:02.053] Server  LOG      ✓ Compiled in 169ms
@@ -14,3 +59,4 @@
 [00:13:05.688] Server  LOG      ✓ Compiled in 110ms
 [00:13:57.384] Server  LOG      ✓ Compiled in 56ms
 [00:14:09.008] Server  LOG      ✓ Compiled in 75ms
+>>>>>>> main

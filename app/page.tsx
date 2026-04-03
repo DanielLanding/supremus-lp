@@ -138,7 +138,7 @@ export default function SupremusPage() {
         {/* ─── HERO ─── */}
         <section
           id="hero"
-          className="hero-bg relative flex flex-col pt-16 md:pt-20 pb-4 overflow-hidden"
+          className="hero-bg relative flex flex-col pt-16 md:pt-20 pb-4 overflow-x-hidden"
           style={{ minHeight: "100vh" }}
         >
           {/* Suavização apenas na base para a divisão de seções */}
@@ -152,7 +152,7 @@ export default function SupremusPage() {
               <img
                 src="/images/Supremus_logo.png"
                 alt="Supremus do Mercado Imobiliário"
-                className="w-52 md:w-80 mb-3 md:mb-4"
+                className="w-72 md:w-[28rem] mb-3 md:mb-4"
               />
               <div className="flex items-center gap-2 md:gap-3 text-[12px] md:text-[16px] text-white/90 mb-3 md:mb-4 font-medium">
                 <span className="tracking-wide uppercase">Mentoria Executiva - Com Altemir Rocha</span>
@@ -172,7 +172,7 @@ export default function SupremusPage() {
             <img
               src="/images/logo-ibraciv.svg"
               alt="IBRACIV"
-              className="h-10 md:h-14 mt-5 md:mt-7 brightness-0 invert opacity-80"
+              className="h-5 md:h-8 mt-5 md:mt-7 brightness-0 invert opacity-80 relative z-20"
             />
           </div>
 
@@ -180,7 +180,7 @@ export default function SupremusPage() {
         <br />
 
         {/* ─── CAROUSEL DE PARTICIPANTES ─── */}
-        <div className="relative z-10 -mt-24 md:-mt-32">
+        <div className="relative z-10 -mt-12 md:-mt-16">
           <MarqueeCarousel />
         </div>
 
