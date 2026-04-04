@@ -13,6 +13,28 @@ type FormData = {
   q4: string
 }
 
+type MentoriaDTO = {
+  name: string
+  email: string
+  whatsapp: string
+  momento_atual: string
+  maior_desafio: string
+  volume_venda_anual: string
+  tamanho_equipe: string
+}
+
+function buildDTO(form: FormData): MentoriaDTO {
+  return {
+    name: form.nome,
+    email: form.email,
+    whatsapp: form.whatsapp,
+    momento_atual: form.q1,
+    maior_desafio: form.q2,
+    volume_venda_anual: form.q3,
+    tamanho_equipe: form.q4,
+  }
+}
+
 const QUESTIONS = [
   {
     id: "q1" as const,
@@ -121,6 +143,10 @@ export function MentoriaModal() {
     if (step === 4 && !validateQuestion("q3")) return
     if (step === 5) {
       if (!validateQuestion("q4")) return
+      const dto = buildDTO(form)
+      console.log("[mentoria] payload:", JSON.stringify(dto, null, 2))
+      // TODO: enviar para webhook
+      // await fetch("https://seu-webhook.com", { method: "POST", body: JSON.stringify(dto) })
       setDone(true)
       return
     }
@@ -159,9 +185,7 @@ export function MentoriaModal() {
 
             {/* Logo */}
             <div className="pt-5 flex justify-center">
-              <span className="navbar-logo-text navbar-logo-gold">
-                SUPREMUS
-              </span>
+              <img src="/images/Logo_symbol_supremus.png" alt="Supremus" className="h-12 w-auto" />
             </div>
 
             {/* Header */}
@@ -316,7 +340,7 @@ export function MentoriaModal() {
 
               {/* Ibraciv logo */}
               <div className="flex justify-center mt-5">
-                <img src="/images/ibraciv_logo.png" alt="Ibraciv" className="h-12 opacity-40" />
+                <img src="/images/ibraciv_logo.png" alt="Ibraciv" className="h-7 opacity-40" />
               </div>
             </div>
           </div>
