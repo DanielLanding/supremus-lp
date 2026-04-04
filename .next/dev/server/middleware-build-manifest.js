@@ -4,22 +4,6 @@ globalThis.__BUILD_MANIFEST = {
   },
   "devFiles": [],
   "polyfillFiles": [
-<<<<<<< fix/logo-ibraciv-responsive-now
-    "static/chunks/04276_next_dist_build_polyfills_polyfill-nomodule.js"
-  ],
-  "lowPriorityFiles": [],
-  "rootMainFiles": [
-    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_b56345dd._.js",
-    "static/chunks/04276_next_dist_compiled_react-dom_50ab56f8._.js",
-    "static/chunks/04276_next_dist_compiled_react-server-dom-turbopack_c2391b46._.js",
-    "static/chunks/04276_next_dist_compiled_next-devtools_index_b36c55b2.js",
-    "static/chunks/04276_next_dist_compiled_74e39d3a._.js",
-    "static/chunks/04276_next_dist_client_b677a3db._.js",
-    "static/chunks/04276_next_dist_68cbf5cf._.js",
-    "static/chunks/04276_@swc_helpers_cjs_cc27d1c8._.js",
-    "static/chunks/Documents_Projects_supremus-lp_a0ff3932._.js",
-    "static/chunks/turbopack-Documents_Projects_supremus-lp_032411bc._.js"
-=======
     "static/chunks/node_modules_next_dist_build_polyfills_polyfill-nomodule.js"
   ],
   "lowPriorityFiles": [],
@@ -34,7 +18,6 @@ globalThis.__BUILD_MANIFEST = {
     "static/chunks/node_modules_@swc_helpers_cjs_d80fb378._.js",
     "static/chunks/_a0ff3932._.js",
     "static/chunks/turbopack-_45210fd5._.js"
->>>>>>> main
   ]
 };
 globalThis.__BUILD_MANIFEST.lowPriorityFiles = [

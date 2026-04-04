@@ -16,7 +16,7 @@ type FormData = {
 type MentoriaDTO = {
   name: string
   email: string
-  whatsapp: string
+  phone: string
   momento_atual: string
   maior_desafio: string
   volume_venda_anual: string
@@ -27,7 +27,7 @@ function buildDTO(form: FormData): MentoriaDTO {
   return {
     name: form.nome,
     email: form.email,
-    whatsapp: form.whatsapp,
+    phone: form.whatsapp,
     momento_atual: form.q1,
     maior_desafio: form.q2,
     volume_venda_anual: form.q3,
@@ -136,7 +136,7 @@ export function MentoriaModal() {
     return true
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (step === 1 && !validateStep1()) return
     if (step === 2 && !validateQuestion("q1")) return
     if (step === 3 && !validateQuestion("q2")) return
@@ -144,9 +144,11 @@ export function MentoriaModal() {
     if (step === 5) {
       if (!validateQuestion("q4")) return
       const dto = buildDTO(form)
-      console.log("[mentoria] payload:", JSON.stringify(dto, null, 2))
-      // TODO: enviar para webhook
-      // await fetch("https://seu-webhook.com", { method: "POST", body: JSON.stringify(dto) })
+      await fetch('https://webhook.sellflux.app/v2/webhook/custom/4edbeb441166d774a334063bfdce5f67', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dto),
+      })
       setDone(true)
       return
     }
