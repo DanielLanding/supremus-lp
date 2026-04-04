@@ -112,9 +112,13 @@ export default function SupremusPage() {
 
       {/* ─── NAVBAR ─── */}
       <header className="navbar fixed top-0 left-0 right-0 z-50">
-        <nav className="max-w-[1400px] mx-auto px-6 lg:px-10 py-4 lg:py-5 flex items-center justify-between lg:justify-center gap-8 lg:gap-12">
-          <a href="#hero" className="shrink-0 navbar-logo-text">
-            <span className="navbar-logo-gold">SUPREMUS</span>
+        <nav className="max-w-[1400px] mx-auto px-6 lg:px-10 h-14 lg:h-16 flex items-center justify-between lg:justify-center gap-8 lg:gap-12">
+          <a href="#hero" className="shrink-0 flex items-center">
+            <img
+              src="/images/Logo-supremos-vertical.png"
+              alt="SUPREMUS"
+              className="h-48 md:h-64 w-auto object-contain -mt-2 md:-mt-3"
+            />
           </a>
           <div className="hidden lg:flex items-center gap-8">
             {[
@@ -174,9 +178,9 @@ export default function SupremusPage() {
               </a>
             </div>
             <img
-              src="/images/logo-ibraciv.svg"
+              src="/images/logo-ibraciv2.svg"
               alt="IBRACIV"
-              className="h-5 md:h-8 mt-5 md:mt-7 brightness-0 invert opacity-80 relative z-20"
+              className="h-4 md:h-6 mt-6 md:mt-8 brightness-0 invert opacity-80 relative z-20"
             />
           </div>
 
@@ -672,20 +676,20 @@ export default function SupremusPage() {
         </section>
 
         {/* ─── IBRACIV SECTION ─── */}
-        <section className="ibraciv-section py-16 md:py-24 px-6">
-          <div className="max-w-3xl mx-auto">
-            <img
-              src="/images/logo-ibraciv.svg"
-              alt="IBRACIV"
-              className="h-16 md:h-20 mx-auto mb-8"
-            />
-            <p className="text-gray-600 text-sm md:text-base leading-relaxed text-center italic">
+        <section className="ibraciv-section py-16 md:py-24 px-6 border-t border-black/5">
+          <div className="max-w-4xl mx-auto flex flex-col items-center">
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed text-center italic mb-12">
               Instituto Brasileiro de Aperfeiçoamento para Corretores, Imobiliárias e Vendedores –
               Uma escola completa e pronta para lhe ensinar, na prática, o que fazer para ter
               sucesso em todas as áreas da sua vida no mercado imobiliário, com o propósito de
               transformar pessoas, elevar o nível da profissão e levar prosperidade a todos que
               tem paixão por vencer.
             </p>
+            <img
+              src="/images/logo-ibraciv2.svg"
+              alt="IBRACIV"
+              className="h-5 md:h-6 opacity-60 hover:opacity-100 transition-opacity"
+            />
           </div>
         </section>
       </main>
