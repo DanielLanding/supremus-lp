@@ -16,9 +16,28 @@ const dancingScript = Dancing_Script({
 })
 
 export const metadata: Metadata = {
-  title: "Corretor Vencedor 2026",
+  title: "Supremus - Mentoria Imobiliária de Elite com Altemir Rocha | IBRACIV",
   description:
-    "O evento que entrega a maior inteligência de conversão de vendas do mercado imobiliário",
+    "A mentoria executiva que organiza e eleva sua operação imobiliária. Aprenda com Altemir Rocha a estratégia para vender mais de R$ 2 bilhões e escalar seu VGV.",
+  keywords: [
+    "mentoria imobiliária",
+    "Altemir Rocha",
+    "corretor de imóveis",
+    "vendas de imóveis",
+    "gestão de imobiliárias",
+    "VGV imobiliário",
+    "IBRACIV",
+    "treinamento de corretores",
+  ],
+  authors: [{ name: "Altemir Rocha" }],
+  openGraph: {
+    title: "Supremus - Mentoria Imobiliária de Elite com Altemir Rocha",
+    description: "Estruture sua operação imobiliária com quem já vendeu mais de R$ 2 bilhões.",
+    images: ["/images/Supremus_logo.png"],
+  },
+  icons: {
+    icon: "/images/Logo_symbol_supremus.png",
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
