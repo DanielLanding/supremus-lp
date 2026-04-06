@@ -294,9 +294,7 @@ export default function SupremusPage() {
 
           {/* Texts (Reduzidos para caber perfeitamente com o vídeo na tela) */}
           <div className="max-w-[1400px] w-full mx-auto text-center flex flex-col items-center relative z-10 px-6 mb-4 md:mb-6 shrink-0" style={{ transform: "translateY(-58px)" }}>
-            <h2 className="text-3xl md:text-4xl lg:text-[2.8rem] font-black mb-2 md:mb-3 leading-tight">
-              <span className="gold-shiny">SUPREMUS</span>
-            </h2>
+            <img src="/images/Logo-supremus-vertical-melhorada.png" alt="Supremus" className="h-16 md:h-20 lg:h-24 w-auto object-contain mb-1" />
             <p className="text-white/70 text-[11px] md:text-sm uppercase tracking-wider font-semibold max-w-2xl mx-auto px-4">
               O ponto onde sua operação começa a crescer de verdade
             </p>
