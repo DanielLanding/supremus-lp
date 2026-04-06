@@ -1,84 +1,181 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import { createPortal } from "react-dom"
+
+/* ─────────────────────────── Types ─────────────────────────── */
+
+type FlowType = "imobiliaria" | "corretor" | "investidor" | null
 
 type FormData = {
   nome: string
   email: string
   whatsapp: string
-  q1: string
-  q2: string
+  momento: string
   q3: string
   q4: string
+  q5: string
+  q6: string // conditional — liderança (flow imobiliária)
 }
 
-type MentoriaDTO = {
-  name: string
-  email: string
-  phone: string
-  momento_atual: string
-  maior_desafio: string
-  volume_venda_anual: string
-  tamanho_equipe: string
+type StepDef = {
+  title: string
+  subtitle: string
+  options: string[]
+  field: keyof FormData
 }
 
-function buildDTO(form: FormData): MentoriaDTO {
-  return {
-    name: form.nome,
-    email: form.email,
-    phone: form.whatsapp,
-    momento_atual: form.q1,
-    maior_desafio: form.q2,
-    volume_venda_anual: form.q3,
-    tamanho_equipe: form.q4,
-  }
-}
+/* ─────────────────────────── Flow definitions ─────────────────────────── */
 
-const QUESTIONS = [
-  {
-    id: "q1" as const,
-    pergunta: "Qual é o seu momento atual no mercado imobiliário?",
-    opcoes: [
-      "Corretor querendo empreender",
-      "Investidor querendo empreender neste mercado",
-      "Gestor / dono de imobiliária",
-      "Gestor de equipe dentro de imobiliária",
-    ],
-  },
-  {
-    id: "q2" as const,
-    pergunta: "Qual é o seu maior desafio hoje na operação?",
-    opcoes: [
-      "Falta de previsibilidade no faturamento",
-      "Dificuldade em escalar e formar equipe",
-      "Ausência de processos e sistemas",
-      "Baixa conversão e captação de clientes",
-    ],
-  },
-  {
-    id: "q3" as const,
-    pergunta: "Qual seu volume médio de venda anual?",
-    opcoes: [
-      "Entre 1 e 5 milhões",
-      "Entre 5 e 20 milhões",
-      "Entre 20 e 50 milhões",
-      "Mais que 50 milhões",
-    ],
-  },
-  {
-    id: "q4" as const,
-    pergunta: "Qual o tamanho da sua equipe de corretores hoje?",
-    opcoes: [
-      "Ainda não tenho",
-      "Entre 1 e 5",
-      "Entre 5 e 20",
-      "Mais que 20",
-    ],
-  },
+const MOMENTO_OPTIONS = [
+  "Dono de imobiliária em crescimento",
+  "Dono de imobiliária buscando escalar",
+  "Corretor que quer abrir uma imobiliária",
+  "Corretor já estruturando sua própria operação",
+  "Investidor entrando no mercado imobiliário",
 ]
 
-const TOTAL_STEPS = 5
+function getFlow(momento: string): FlowType {
+  if (momento === MOMENTO_OPTIONS[0] || momento === MOMENTO_OPTIONS[1]) return "imobiliaria"
+  if (momento === MOMENTO_OPTIONS[2] || momento === MOMENTO_OPTIONS[3]) return "corretor"
+  if (momento === MOMENTO_OPTIONS[4]) return "investidor"
+  return null
+}
+
+const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
+  imobiliaria: [
+    {
+      title: "Qual é o principal desafio da sua operação?",
+      subtitle: "Escolha o ponto que mais limita o crescimento da sua imobiliária hoje.",
+      field: "q3",
+      options: [
+        "Falta de previsibilidade no faturamento",
+        "Dificuldade em formar e manter equipe produtiva",
+        "Operação desorganizada (processos, gestão e acompanhamento)",
+        "Baixa conversão e geração de clientes",
+        "Estou vendendo bem, mas travado para escalar",
+      ],
+    },
+    {
+      title: "Qual foi o volume gerado em comissões nos últimos 3 meses? (VGC)",
+      subtitle: "Considere o valor líquido da operação, já descontando as comissões dos corretores.",
+      field: "q4",
+      options: [
+        "Até R$30 mil",
+        "Entre R$30 mil e R$80 mil",
+        "Entre R$80 mil e R$200 mil",
+        "Entre R$200 mil e R$500 mil",
+        "Acima de R$500 mil",
+      ],
+    },
+    {
+      title: "Qual é o tamanho da sua equipe comercial?",
+      subtitle: "Considere os corretores ativos na sua operação hoje.",
+      field: "q5",
+      options: [
+        "Não tenho equipe (atuo sozinho)",
+        "Entre 1 e 5 corretores",
+        "Entre 5 e 10 corretores",
+        "Entre 10 e 20 corretores",
+        "Mais de 20 corretores",
+      ],
+    },
+  ],
+  corretor: [
+    {
+      title: "O que está te levando a querer abrir sua própria imobiliária?",
+      subtitle: "Escolha o que mais representa seu momento hoje.",
+      field: "q3",
+      options: [
+        "Não quero mais depender de outras imobiliárias",
+        "Sinto que posso crescer mais e ganhar mais do que ganho hoje",
+        "Quero construir algo meu dentro do mercado imobiliário",
+        "Já estou me organizando para abrir minha própria operação",
+        "Já comecei a estruturar minha própria imobiliária",
+      ],
+    },
+    {
+      title: "Nos últimos 3 meses, quanto você gerou em comissões? (VGC)",
+      subtitle: "Considere o valor total das suas comissões no período. As informações são confidenciais.",
+      field: "q4",
+      options: [
+        "Até R$20 mil",
+        "Entre R$20 mil e R$50 mil",
+        "Entre R$50 mil e R$100 mil",
+        "Entre R$100 mil e R$200 mil",
+        "Acima de R$200 mil",
+      ],
+    },
+    {
+      title: "Como você pretende iniciar sua operação?",
+      subtitle: "Considere o que você já tem definido hoje.",
+      field: "q5",
+      options: [
+        "Vou começar sozinho",
+        "Pretendo iniciar com 1 a 2 corretores",
+        "Já estou estruturando uma equipe (até 5 corretores)",
+        "Já tenho uma pequena equipe formada",
+      ],
+    },
+  ],
+  investidor: [
+    {
+      title: "O que está te levando a entrar no mercado imobiliário?",
+      subtitle: "Escolha o que mais representa seu momento hoje.",
+      field: "q3",
+      options: [
+        "Vejo o mercado imobiliário como uma boa oportunidade",
+        "Quero diversificar meus investimentos",
+        "Quero construir uma nova fonte de renda nesse mercado",
+        "Já venho estudando como entrar nesse segmento",
+        "Já estou me organizando para iniciar uma operação",
+      ],
+    },
+    {
+      title: "Qual o capital disponível para investir na operação?",
+      subtitle: "Considere o valor que pretende investir inicialmente.",
+      field: "q4",
+      options: [
+        "Até R$30 mil",
+        "Entre R$30 mil e R$80 mil",
+        "Entre R$80 mil e R$200 mil",
+        "Entre R$200 mil e R$500 mil",
+        "Acima de R$500 mil",
+      ],
+    },
+    {
+      title: "Como você pretende estruturar sua operação imobiliária?",
+      subtitle: "Considere o nível de estrutura que você imagina para iniciar.",
+      field: "q5",
+      options: [
+        "Pretendo começar de forma enxuta, operando sem escritório",
+        "Quero iniciar com estrutura simples e baixo custo",
+        "Pretendo montar uma operação com equipe e estrutura básica",
+        "Quero montar uma imobiliária estruturada com escritório físico",
+        "Quero construir uma operação completa, com estrutura profissional desde o início",
+      ],
+    },
+  ],
+}
+
+// Conditional question for imobiliária flow when equipe > 5
+const LIDERANCA_STEP: StepDef = {
+  title: "Você possui liderança estruturada?",
+  subtitle: "Gerente ou coordenador responsável pela equipe.",
+  field: "q6",
+  options: [
+    "Não, eu mesmo gerencio toda a operação",
+    "Sim, tenho um gerente ou coordenador responsável pela equipe",
+  ],
+}
+
+const EQUIPE_ACIMA_5 = [
+  "Entre 5 e 10 corretores",
+  "Entre 10 e 20 corretores",
+  "Mais de 20 corretores",
+]
+
+/* ─────────────────────────── Helpers ─────────────────────────── */
 
 function formatWhatsapp(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 11)
@@ -87,28 +184,54 @@ function formatWhatsapp(value: string) {
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
 }
 
+function getSteps(flow: FlowType, form: FormData): StepDef[] {
+  if (!flow) return []
+  const steps = [...FLOW_STEPS[flow]]
+  if (flow === "imobiliaria" && EQUIPE_ACIMA_5.includes(form.q5)) {
+    steps.push(LIDERANCA_STEP)
+  }
+  return steps
+}
+
+function getTotalSteps(flow: FlowType, form: FormData) {
+  // Step 1 (dados) + Step 2 (momento) + flow steps
+  return 2 + getSteps(flow, form).length
+}
+
+/* ─────────────────────────── Component ─────────────────────────── */
+
 export function MentoriaModal() {
   const [open, setOpen] = useState(false)
   const [step, setStep] = useState(1)
   const [done, setDone] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [animating, setAnimating] = useState(false)
   const [form, setForm] = useState<FormData>({
-    nome: "",
-    email: "",
-    whatsapp: "",
-    q1: "",
-    q2: "",
-    q3: "",
-    q4: "",
+    nome: "", email: "", whatsapp: "", momento: "",
+    q3: "", q4: "", q5: "", q6: "",
   })
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
+  const [errors, setErrors] = useState<Partial<Record<string, string>>>({})
+  const bodyRef = useRef<HTMLDivElement>(null)
+
+  const flow = getFlow(form.momento)
+  const flowSteps = getSteps(flow, form)
+  const totalSteps = getTotalSteps(flow, form)
+
+  // Transition helper
+  const transitionTo = useCallback((nextStep: number) => {
+    setStep(nextStep)
+  }, [])
 
   function openModal() {
     setOpen(true)
     setStep(1)
     setDone(false)
-    setForm({ nome: "", email: "", whatsapp: "", q1: "", q2: "", q3: "", q4: "" })
+    setSubmitting(false)
+    setAnimating(true)
+    setForm({ nome: "", email: "", whatsapp: "", momento: "", q3: "", q4: "", q5: "", q6: "" })
     setErrors({})
     document.body.classList.add("modal-open")
+    setTimeout(() => setAnimating(false), 300)
   }
 
   function closeModal() {
@@ -117,7 +240,7 @@ export function MentoriaModal() {
   }
 
   function validateStep1() {
-    const e: typeof errors = {}
+    const e: Record<string, string> = {}
     if (!form.nome.trim()) e.nome = "Informe seu nome"
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       e.email = "Informe um e-mail válido"
@@ -127,9 +250,9 @@ export function MentoriaModal() {
     return Object.keys(e).length === 0
   }
 
-  function validateQuestion(qId: "q1" | "q2" | "q3" | "q4") {
-    if (!form[qId]) {
-      setErrors({ [qId]: "Selecione uma opção para continuar" })
+  function validateSelection(field: string) {
+    if (!(form as any)[field]) {
+      setErrors({ [field]: "Selecione uma opção para continuar" })
       return false
     }
     setErrors({})
@@ -137,34 +260,149 @@ export function MentoriaModal() {
   }
 
   async function handleNext() {
-    if (step === 1 && !validateStep1()) return
-    if (step === 2 && !validateQuestion("q1")) return
-    if (step === 3 && !validateQuestion("q2")) return
-    if (step === 4 && !validateQuestion("q3")) return
-    if (step === 5) {
-      if (!validateQuestion("q4")) return
-      const dto = buildDTO(form)
-      await fetch('https://webhook.sellflux.app/v2/webhook/custom/4edbeb441166d774a334063bfdce5f67', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dto),
-      })
-      setDone(true)
+    if (step === 1) {
+      if (!validateStep1()) return
+      setStep(2)
       return
     }
-    setStep((s) => s + 1)
+
+    if (step === 2) {
+      if (!validateSelection("momento")) return
+      // Reset flow-specific answers when changing flow
+      setForm(f => ({ ...f, q3: "", q4: "", q5: "", q6: "" }))
+      setStep(3)
+      return
+    }
+
+    // Flow-specific steps (step 3+)
+    const flowIndex = step - 3
+    const currentFlowStep = flowSteps[flowIndex]
+    if (!currentFlowStep) return
+
+    if (!validateSelection(currentFlowStep.field)) return
+
+    const isLastFlowStep = flowIndex === flowSteps.length - 1
+
+    // Check if we need to add liderança step dynamically
+    // (it gets added to flowSteps when q5 is answered with >5)
+    if (isLastFlowStep) {
+      // Check if we just answered q5 and need liderança
+      if (
+        flow === "imobiliaria" &&
+        currentFlowStep.field === "q5" &&
+        EQUIPE_ACIMA_5.includes(form.q5)
+      ) {
+        // liderança step will appear as next
+        setStep(step + 1)
+        return
+      }
+
+      // Show loading, submit, then show success
+      setSubmitting(true)
+      submitForm().then(() => {
+        setTimeout(() => {
+          setSubmitting(false)
+          setDone(true)
+        }, 1500)
+      })
+      return
+    }
+
+    setStep(step + 1)
+  }
+
+  async function submitForm() {
+    const dto: Record<string, string> = {
+      name: form.nome,
+      email: form.email,
+      phone: form.whatsapp,
+      momento_atual: form.momento,
+    }
+
+    if (flow === "imobiliaria") {
+      dto.principal_desafio = form.q3
+      dto.vgc_3_meses = form.q4
+      dto.tamanho_equipe = form.q5
+      if (form.q6) dto.lideranca_estruturada = form.q6
+    } else if (flow === "corretor") {
+      dto.motivacao = form.q3
+      dto.vgc_3_meses = form.q4
+      dto.inicio_operacao = form.q5
+    } else if (flow === "investidor") {
+      dto.motivacao = form.q3
+      dto.capital_disponivel = form.q4
+      dto.estrutura_operacao = form.q5
+    }
+
+    try {
+      await fetch(
+        "https://webhook.sellflux.app/v2/webhook/custom/4edbeb441166d774a334063bfdce5f67",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dto),
+        }
+      )
+    } catch {
+      // silently fail — don't block UX
+    }
   }
 
   function handleBack() {
     setErrors({})
-    setStep((s) => s - 1)
+
+    if (step === 3) {
+      // Going back to momento — keep momento selected
+      setStep(2)
+      return
+    }
+
+    // Check if going back should skip liderança
+    setStep(step - 1)
   }
 
-  const currentQuestion = QUESTIONS[step - 2]
+  // Current flow step definition (for steps 3+)
+  const currentFlowStep = step >= 3 ? flowSteps[step - 3] : null
+
+  // Step title & subtitle for header
+  function getHeaderContent(): { title: string; subtitle: string } {
+    if (submitting) return { title: "Processando...", subtitle: "Aguarde enquanto enviamos sua aplicação." }
+    if (done) return { title: "Aplicação realizada com sucesso!", subtitle: "" }
+    if (step === 1) return {
+      title: "Comece sua aplicação",
+      subtitle: "Responda com atenção. Vamos entender seu momento para avaliar se a Supremus faz sentido para sua operação.",
+    }
+    if (step === 2) return {
+      title: "Qual é o seu momento hoje?",
+      subtitle: "Isso nos ajuda a entender seu nível de operação e direcionar melhor a análise da sua aplicação.",
+    }
+    if (currentFlowStep) return {
+      title: currentFlowStep.title,
+      subtitle: currentFlowStep.subtitle,
+    }
+    return { title: "", subtitle: "" }
+  }
+
+  const header = getHeaderContent()
+
+  // Animation classes - simplified to a pure fade for smoother transitions
+  const fadeClass = animating
+    ? "opacity-0"
+    : "opacity-100 transition-opacity duration-500 ease-in-out"
+
+  if (!open) {
+    return (
+      <button
+        onClick={openModal}
+        className="bg-[#f4c264] hover:bg-[#eab34e] text-black rounded-xl font-bold transition-colors block w-full max-w-[550px] text-center p-3 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide cursor-pointer"
+      >
+        QUERO A MENTORIA SUPREMUS
+      </button>
+    )
+  }
 
   return (
     <>
-      {/* ── Trigger Button ── */}
       <button
         onClick={openModal}
         className="bg-[#f4c264] hover:bg-[#eab34e] text-black rounded-xl font-bold transition-colors block w-full max-w-[550px] text-center p-3 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide cursor-pointer"
@@ -172,16 +410,13 @@ export function MentoriaModal() {
         QUERO A MENTORIA SUPREMUS
       </button>
 
-      {/* ── Backdrop (portal → direto no body, fora da árvore que recebe blur) ── */}
-      {open && createPortal(
+      {createPortal(
         <div
           data-modal-overlay
-          className="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-xl flex items-center justify-center p-4"
+          className="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-xl flex items-center justify-center p-4 animate-fadeIn"
           onClick={(e) => e.target === e.currentTarget && closeModal()}
         >
-          {/* ── Modal Card ── */}
-          <div className="relative z-[9999] w-full max-w-lg bg-[#0f1f14] border border-[#D4A843]/20 rounded-2xl shadow-2xl overflow-hidden">
-
+          <div className="relative z-[9999] w-full max-w-lg bg-[#0f1f14] border border-[#D4A843]/20 rounded-2xl shadow-2xl overflow-hidden animate-scaleIn">
             {/* Gold top bar */}
             <div className="h-1 w-full bg-gradient-to-r from-[#D4A843] via-[#f4c264] to-[#D4A843]" />
 
@@ -191,18 +426,23 @@ export function MentoriaModal() {
             </div>
 
             {/* Header */}
-            <div className="px-6 pt-3 pb-4 flex items-center justify-between">
-              <div>
+            <div className="px-6 pt-3 pb-2 flex items-start justify-between">
+              <div className={`flex-1 ${fadeClass}`}>
                 <p className="text-[#D4A843] text-xs font-bold tracking-widest uppercase mb-1">
-                  Aplicação Mentoria Supremus
+                  Aplicação Supremus
                 </p>
                 <h2 className="text-white font-black text-xl leading-tight">
-                  {done ? "Aplicação recebida!" : step === 1 ? "Fale um pouco sobre você" : currentQuestion.pergunta}
+                  {header.title}
                 </h2>
+                {header.subtitle && (
+                  <p className="text-white/40 text-[13px] mt-1.5 leading-snug">
+                    {header.subtitle}
+                  </p>
+                )}
               </div>
               <button
                 onClick={closeModal}
-                className="text-white/40 hover:text-white/80 transition-colors ml-4 shrink-0"
+                className="text-white/40 hover:text-white/80 transition-colors ml-4 shrink-0 mt-1"
                 aria-label="Fechar"
               >
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -212,116 +452,120 @@ export function MentoriaModal() {
             </div>
 
             {/* Progress bar */}
-            {!done && (
-              <div className="px-6 mb-6">
+            {!done && !submitting && (
+              <div className="px-6 mt-2 mb-5">
                 <div className="flex gap-1.5">
-                  {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
+                  {Array.from({ length: totalSteps }).map((_, i) => (
                     <div
                       key={i}
-                      className={`h-1 flex-1 rounded-full transition-all duration-300 ${i < step ? "bg-[#D4A843]" : "bg-white/10"}`}
+                      className={`h-1 flex-1 rounded-full transition-all duration-500 ease-out ${
+                        i < step ? "bg-[#D4A843]" : "bg-white/10"
+                      }`}
                     />
                   ))}
                 </div>
                 <p className="text-white/30 text-[11px] mt-1.5">
-                  Etapa {step} de {TOTAL_STEPS}
+                  Etapa {step} de {totalSteps}
                 </p>
               </div>
             )}
 
             {/* Body */}
-            <div className="px-6 pb-6">
-              {done ? (
-                /* ── Success screen ── */
-                <div className="flex flex-col items-center text-center py-4 gap-4">
-                  <div className="w-16 h-16 rounded-full bg-[#D4A843]/15 flex items-center justify-center">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A843" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
+            <div ref={bodyRef} className="px-6 pb-6">
+              <div className={fadeClass}>
+                {submitting ? (
+                  /* ── Loading screen ── */
+                  <div className="flex flex-col items-center justify-center text-center py-12 gap-4 animate-fadeIn">
+                    <div className="w-12 h-12 rounded-full border-[3px] border-white/10 border-t-[#D4A843] animate-spin" />
+                    <p className="text-white/50 text-sm font-medium">
+                      Enviando sua aplicação...
+                    </p>
                   </div>
-                  <p className="text-white/70 text-sm leading-relaxed max-w-sm">
-                    Recebemos sua aplicação. Em breve você receberá um e-mail confirmando sua aplicação, e se aprovado seu perfil nossa equipe entrará em contato com você pelo WhatsApp.
-                  </p>
-                  <button
-                    onClick={closeModal}
-                    className="mt-2 bg-[#D4A843] hover:bg-[#c49a3a] text-black font-bold py-3 px-8 rounded-xl transition-colors text-sm tracking-wide"
-                  >
-                    FECHAR
-                  </button>
-                </div>
-              ) : step === 1 ? (
-                /* ── Step 1: Dados pessoais ── */
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Nome completo</label>
-                    <input
-                      type="text"
-                      placeholder="Seu nome"
-                      value={form.nome}
-                      onChange={(e) => setForm((f) => ({ ...f, nome: e.target.value }))}
-                      className={`w-full bg-white/5 border ${errors.nome ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#D4A843]/60 transition-colors`}
-                    />
-                    {errors.nome && <p className="text-red-400 text-xs mt-1">{errors.nome}</p>}
+                ) : done ? (
+                  /* ── Success screen ── */
+                  <div className="flex flex-col items-center text-center py-4 gap-4 animate-fadeIn">
+                    <div className="w-16 h-16 rounded-full bg-[#D4A843]/15 flex items-center justify-center animate-scaleIn">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A843" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-lg mb-2">Aplicação realizada com sucesso!</h3>
+                      <p className="text-white/50 text-sm leading-relaxed max-w-sm">
+                        Sua aplicação será analisada pela equipe. Caso seu perfil esteja alinhado com a Supremus, você será direcionado para a próxima etapa.
+                      </p>
+                    </div>
+                    <button
+                      onClick={closeModal}
+                      className="mt-2 bg-[#D4A843] hover:bg-[#c49a3a] text-black font-bold py-3 px-8 rounded-xl transition-colors text-sm tracking-wide"
+                    >
+                      FECHAR
+                    </button>
                   </div>
-                  <div>
-                    <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">E-mail</label>
-                    <input
-                      type="email"
-                      placeholder="seu@email.com"
-                      value={form.email}
-                      onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                      className={`w-full bg-white/5 border ${errors.email ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#D4A843]/60 transition-colors`}
-                    />
-                    {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+                ) : step === 1 ? (
+                  /* ── Step 1: Dados pessoais ── */
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Nome completo</label>
+                      <input
+                        type="text"
+                        placeholder="Seu nome"
+                        value={form.nome}
+                        onChange={(e) => setForm((f) => ({ ...f, nome: e.target.value }))}
+                        className={`w-full bg-white/5 border ${errors.nome ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#D4A843]/60 transition-colors`}
+                      />
+                      {errors.nome && <p className="text-red-400 text-xs mt-1">{errors.nome}</p>}
+                    </div>
+                    <div>
+                      <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">E-mail</label>
+                      <input
+                        type="email"
+                        placeholder="seu@email.com"
+                        value={form.email}
+                        onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                        className={`w-full bg-white/5 border ${errors.email ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#D4A843]/60 transition-colors`}
+                      />
+                      {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+                    </div>
+                    <div>
+                      <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">WhatsApp</label>
+                      <input
+                        type="tel"
+                        placeholder="(00) 00000-0000"
+                        value={form.whatsapp}
+                        onChange={(e) => setForm((f) => ({ ...f, whatsapp: formatWhatsapp(e.target.value) }))}
+                        className={`w-full bg-white/5 border ${errors.whatsapp ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#D4A843]/60 transition-colors`}
+                      />
+                      {errors.whatsapp && <p className="text-red-400 text-xs mt-1">{errors.whatsapp}</p>}
+                    </div>
                   </div>
-                  <div>
-                    <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">WhatsApp</label>
-                    <input
-                      type="tel"
-                      placeholder="(00) 00000-0000"
-                      value={form.whatsapp}
-                      onChange={(e) => setForm((f) => ({ ...f, whatsapp: formatWhatsapp(e.target.value) }))}
-                      className={`w-full bg-white/5 border ${errors.whatsapp ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#D4A843]/60 transition-colors`}
-                    />
-                    {errors.whatsapp && <p className="text-red-400 text-xs mt-1">{errors.whatsapp}</p>}
-                  </div>
-                </div>
-              ) : (
-                /* ── Steps 2-5: Questions ── */
-                <div className="flex flex-col gap-3">
-                  {errors[currentQuestion.id] && (
-                    <p className="text-red-400 text-xs -mt-1">{errors[currentQuestion.id]}</p>
-                  )}
-                  {currentQuestion.opcoes.map((opcao) => {
-                    const selected = form[currentQuestion.id] === opcao
-                    return (
-                      <button
-                        key={opcao}
-                        onClick={() => {
-                          setForm((f) => ({ ...f, [currentQuestion.id]: opcao }))
-                          setErrors({})
-                        }}
-                        className={`w-full text-left px-4 py-3.5 rounded-xl border text-sm font-medium transition-all duration-200 ${
-                          selected
-                            ? "bg-[#D4A843]/15 border-[#D4A843] text-[#f4c264]"
-                            : "bg-white/5 border-white/10 text-white/70 hover:border-white/25 hover:text-white"
-                        }`}
-                      >
-                        <span className={`inline-flex w-5 h-5 rounded-full border mr-3 items-center justify-center shrink-0 transition-all ${selected ? "border-[#D4A843] bg-[#D4A843]" : "border-white/20"}`}>
-                          {selected && (
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                              <path d="M2 5l2 2 4-4" stroke="#000" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          )}
-                        </span>
-                        {opcao}
-                      </button>
-                    )
-                  })}
-                </div>
-              )}
+                ) : step === 2 ? (
+                  /* ── Step 2: Momento atual ── */
+                  <OptionList
+                    options={MOMENTO_OPTIONS}
+                    selected={form.momento}
+                    error={errors.momento}
+                    onSelect={(val) => {
+                      setForm(f => ({ ...f, momento: val, q3: "", q4: "", q5: "", q6: "" }))
+                      setErrors({})
+                    }}
+                  />
+                ) : currentFlowStep ? (
+                  /* ── Flow-specific steps ── */
+                  <OptionList
+                    options={currentFlowStep.options}
+                    selected={(form as any)[currentFlowStep.field]}
+                    error={errors[currentFlowStep.field]}
+                    onSelect={(val) => {
+                      setForm(f => ({ ...f, [currentFlowStep.field]: val }))
+                      setErrors({})
+                    }}
+                  />
+                ) : null}
+              </div>
 
               {/* Footer buttons */}
-              {!done && (
+              {!done && !submitting && (
                 <div className="flex gap-3 mt-6">
                   {step > 1 && (
                     <button
@@ -335,7 +579,7 @@ export function MentoriaModal() {
                     onClick={handleNext}
                     className="flex-1 bg-[#D4A843] hover:bg-[#c49a3a] text-black font-bold py-3 rounded-xl transition-colors text-sm tracking-wide"
                   >
-                    {step === TOTAL_STEPS ? "ENVIAR" : "PRÓXIMO"}
+                    {step === totalSteps ? "ENVIAR APLICAÇÃO" : "PRÓXIMO"}
                   </button>
                 </div>
               )}
@@ -350,5 +594,51 @@ export function MentoriaModal() {
         document.body
       )}
     </>
+  )
+}
+
+/* ─────────────────────────── OptionList ─────────────────────────── */
+
+function OptionList({
+  options,
+  selected,
+  error,
+  onSelect,
+}: {
+  options: string[]
+  selected: string
+  error?: string
+  onSelect: (val: string) => void
+}) {
+  return (
+    <div className="flex flex-col gap-3">
+      {error && <p className="text-red-400 text-[13px] font-medium -mt-1 mb-1">{error}</p>}
+      {options.map((opcao, i) => {
+        const isSelected = selected === opcao
+        return (
+          <button
+            key={opcao}
+            onClick={() => onSelect(opcao)}
+            className={`w-full flex items-start text-left px-5 py-4 rounded-xl border text-[14px] md:text-[15px] font-medium transition-all duration-300 group ${
+              isSelected
+                ? "bg-[#D4A843]/10 border-[#D4A843] text-white"
+                : "bg-white/[0.03] border-white/10 text-white/60 hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+            }`}
+            style={{ animationDelay: `${i * 40}ms` }}
+          >
+            <div className={`mt-0.5 inline-flex w-[18px] h-[18px] rounded-full border mr-4 items-center justify-center shrink-0 transition-all duration-300 ${
+              isSelected ? "border-[#D4A843] bg-[#D4A843] shadow-[0_0_10px_rgba(212,168,67,0.4)]" : "border-white/20 group-hover:border-white/40"
+            }`}>
+              {isSelected && (
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5l2 2 4-4" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+            </div>
+            <span className="leading-relaxed">{opcao}</span>
+          </button>
+        )
+      })}
+    </div>
   )
 }
