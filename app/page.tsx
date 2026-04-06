@@ -386,7 +386,7 @@ export default function SupremusPage() {
                 <div className="absolute top-[10%] md:top-[20%] left-[8%] md:left-[10%] w-[50%] md:w-[45%] aspect-[3/4] shadow-[0_15px_40px_rgba(0,0,0,0.4)] z-0">
                   <img
                     src="/images/design-1.webp"
-                    alt="Mentoria Sala"
+                    alt="Sala de reunião da mentoria imobiliária com corretores de alta performance"
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -396,7 +396,7 @@ export default function SupremusPage() {
                 <div className="absolute top-[50%] md:top-[55%] left-[25%] md:left-[22%] w-[70%] md:w-[65%] aspect-[16/10] shadow-[0_25px_50px_rgba(0,0,0,0.6)] z-10">
                   <img
                     src="/iate"
-                    alt="Iate em Alto Mar"
+                    alt="Experiência de mentoria imobiliária em alto mar em um iate de luxo"
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -405,7 +405,7 @@ export default function SupremusPage() {
                   <div className="absolute top-0 left-0 z-20" style={{ transform: "translate(-50%, -50%)" }}>
                     <img
                       src="/images/experiencia-boat.webp"
-                      alt="Selo Experiência"
+                      alt="Selo Experiência Alto Padrão - Mentoria Altemir Rocha"
                       className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
                       loading="lazy"
                     />
@@ -432,7 +432,7 @@ export default function SupremusPage() {
                 <div className="flex items-start gap-5 mb-6">
                   <img
                     src="/images/design-2-1.webp"
-                    alt="Altemir Rocha"
+                    alt="Altemir Rocha - Mentor de vendas imobiliárias e fundador do IBRACIV"
                     className="w-16 h-16 rounded-full object-cover shrink-0"
                     loading="lazy"
                   />
