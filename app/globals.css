@@ -154,7 +154,7 @@ body.modal-open>*:not([data-modal-overlay]) {
 
 /* ─── Hero ─── */
 .hero-bg {
-  background-image: url('/images/supremus_seccion1.jpeg');
+  background-image: url('/images/section_01BG.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
