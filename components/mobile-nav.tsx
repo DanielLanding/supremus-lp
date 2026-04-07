@@ -5,11 +5,9 @@ import { createPortal } from "react-dom"
 
 const NAV_LINKS = [
   ["#hero", "Início"],
-  ["#ingressos", "Ingressos"],
-  ["#sobre", "Sobre o Evento"],
-  ["#edicao", "Edição 2026"],
+  ["#sobre", "Sobre a Mentoria"],
   ["#depoimentos", "Depoimentos"],
-  ["#experiencia", "Experiência Alto Padrão"],
+  ["#experiencia", "Mentoria Supremus"],
 ]
 
 export function MobileNav() {

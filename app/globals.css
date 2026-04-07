@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ─── Modal blur ─── */
-body.modal-open > *:not([data-modal-overlay]) {
+body.modal-open>*:not([data-modal-overlay]) {
   filter: blur(6px) brightness(0.6);
   transition: filter 0.25s ease;
   pointer-events: none;
@@ -11,13 +11,25 @@ body.modal-open > *:not([data-modal-overlay]) {
 
 /* ─── Modal animations ─── */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95) translateY(10px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .animate-fadeIn {
@@ -30,6 +42,7 @@ body.modal-open > *:not([data-modal-overlay]) {
 
 /* ─── Base reset ─── */
 @layer base {
+
   *,
   *::before,
   *::after {
@@ -112,16 +125,14 @@ body.modal-open > *:not([data-modal-overlay]) {
 
 .navbar-logo-gold {
   font-weight: 900;
-  background: linear-gradient(
-    135deg,
-    #b8860b 0%,
-    #d4a843 20%,
-    #f5d680 40%,
-    #ffe8a0 50%,
-    #f5d680 60%,
-    #d4a843 80%,
-    #b8860b 100%
-  );
+  background: linear-gradient(135deg,
+      #b8860b 0%,
+      #d4a843 20%,
+      #f5d680 40%,
+      #ffe8a0 50%,
+      #f5d680 60%,
+      #d4a843 80%,
+      #b8860b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -130,8 +141,15 @@ body.modal-open > *:not([data-modal-overlay]) {
 }
 
 @keyframes shiny-gold {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* ─── Hero ─── */
@@ -163,12 +181,10 @@ body.modal-open > *:not([data-modal-overlay]) {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 26, 16, 0.35) 0%,
-    rgba(10, 26, 16, 0.45) 50%,
-    rgba(10, 26, 16, 0.75) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(10, 26, 16, 0.35) 0%,
+      rgba(10, 26, 16, 0.45) 50%,
+      rgba(10, 26, 16, 0.75) 100%);
   pointer-events: none;
 }
 
@@ -184,7 +200,7 @@ body.modal-open > *:not([data-modal-overlay]) {
   max-width: 850px;
   width: 95%;
   margin: 0 auto;
-  box-shadow: 
+  box-shadow:
     0 25px 50px -12px rgba(0, 0, 0, 0.7),
     0 0 0 1px rgba(255, 255, 255, 0.03),
     inset 0 1px 1px rgba(255, 255, 255, 0.12),
@@ -200,21 +216,27 @@ body.modal-open > *:not([data-modal-overlay]) {
   left: -150%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.08),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08),
+      transparent);
   transform: skewX(-20deg);
   animation: card-shine 8s infinite linear;
   pointer-events: none;
 }
 
 @keyframes card-shine {
-  0% { left: -150%; }
-  20% { left: 200%; }
-  100% { left: 200%; }
+  0% {
+    left: -150%;
+  }
+
+  20% {
+    left: 200%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }
 
 .hero-cta-btn {
@@ -244,8 +266,13 @@ body.modal-open > *:not([data-modal-overlay]) {
 
 /* ─── Marquee / Carousel ─── */
 @keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .marquee-track {
@@ -270,6 +297,7 @@ body.modal-open > *:not([data-modal-overlay]) {
     width: 260px;
     height: 380px;
   }
+
   .marquee-track {
     gap: 16px;
   }
@@ -322,53 +350,68 @@ body.modal-open > *:not([data-modal-overlay]) {
 }
 
 /* ─── Sobre — fotos edge-to-edge ─── */
-.sobre-fotos-row {
+/* ─── Sobre — Carrossel Arrastável (Sem cortes) ─── */
+.sobre-fotos-carousel {
   display: flex;
   width: 100vw;
-  max-width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
   gap: 0;
   padding: 0;
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
-.sobre-foto-item {
-  flex: 1 1 0;
-  height: 22vw;
-  max-height: 380px;
-  min-height: 120px;
+.sobre-fotos-carousel.active {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.sobre-foto-carousel-item {
+  flex: 0 0 auto;
+  height: 50vh;
+  min-height: 350px;
+  max-height: 700px;
+  width: auto;
+  border-radius: 0;
   overflow: hidden;
-  border-right: 2px solid #fff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.sobre-foto-item:last-child {
-  border-right: none;
+.sobre-foto-carousel-item:hover {
+  transform: none;
 }
 
-.sobre-foto-img {
-  width: 100%;
+.sobre-foto-full-img {
+  width: auto;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
+/* Utilitário para esconder scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @media (max-width: 767px) {
-  .sobre-fotos-row {
-    flex-wrap: wrap;
+  .sobre-fotos-carousel {
+    padding: 0;
+    gap: 0;
   }
-  .sobre-foto-item {
-    flex: 0 0 50%;
-    max-width: 50%;
-    height: 44vw;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-  }
-  .sobre-foto-item:nth-child(2n) {
-    border-right: none;
-  }
-  .sobre-foto-item:nth-child(3),
-  .sobre-foto-item:nth-child(4) {
-    border-bottom: none;
+
+  .sobre-foto-carousel-item {
+    height: 40vh;
+    min-height: 300px;
   }
 }
 
@@ -432,8 +475,13 @@ body.modal-open > *:not([data-modal-overlay]) {
 
 /* ─── Golden Marquee ─── */
 @keyframes marquee-gold-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .golden-marquee {
@@ -461,7 +509,7 @@ body.modal-open > *:not([data-modal-overlay]) {
   display: flex;
   gap: 0;
   width: max-content;
-  animation: marquee-gold-scroll 20s linear infinite;
+  animation: marquee-gold-scroll 60s linear infinite;
   will-change: transform;
   position: relative;
   z-index: 5;
@@ -573,12 +621,10 @@ body.modal-open > *:not([data-modal-overlay]) {
 .grupo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 26, 16, 0.3) 0%,
-    rgba(245, 245, 247, 0.6) 50%,
-    rgba(245, 245, 247, 0.95) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(10, 26, 16, 0.3) 0%,
+      rgba(245, 245, 247, 0.6) 50%,
+      rgba(245, 245, 247, 0.95) 100%);
   z-index: 1;
 }
 
@@ -642,8 +688,15 @@ body.modal-open > *:not([data-modal-overlay]) {
 
 /* ─── Scroll down icon animation ─── */
 @keyframes bounce-down {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 .scroll-icon {
@@ -663,24 +716,27 @@ body.modal-open > *:not([data-modal-overlay]) {
 
 /* ─── Shiny gold effect ─── */
 @keyframes gold-shine {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
 }
 
 .gold-shiny {
-  background: linear-gradient(
-    120deg,
-    #D4A843 0%,
-    #D4A843 35%,
-    #f5e6a3 50%,
-    #D4A843 65%,
-    #D4A843 100%
-  );
+  background: linear-gradient(120deg,
+      #D4A843 0%,
+      #D4A843 35%,
+      #f5e6a3 50%,
+      #D4A843 65%,
+      #D4A843 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gold-shine 4s ease-in-out infinite;
+  animation: gold-shine 4s linear infinite;
 }
 
 .gold-btn-shiny {
@@ -695,19 +751,99 @@ body.modal-open > *:not([data-modal-overlay]) {
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.25) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.25) 50%,
+      transparent 100%);
   animation: btn-shine 3.5s ease-in-out infinite;
 }
 
 @keyframes btn-shine {
+  0% {
+    left: -100%;
+  }
+
+  60% {
+    left: 120%;
+  }
+
+  100% {
+    left: 120%;
+  }
+}
+
+/* ─── Gold metallic button ─── */
+.gold-metallic-btn {
+  background: linear-gradient(135deg,
+    #b8860b 0%,
+    #d4a843 15%,
+    #f5d680 35%,
+    #ffe8a0 50%,
+    #f5d680 65%,
+    #d4a843 85%,
+    #b8860b 100%);
+  background-size: 200% 200%;
+  color: #1a0f00;
+  text-shadow: 0 1px 1px rgba(255, 230, 150, 0.3);
+  border: 1px solid rgba(212, 168, 67, 0.4);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 240, 180, 0.5),
+    inset 0 -1px 2px rgba(140, 100, 20, 0.3),
+    0 4px 15px rgba(212, 168, 67, 0.2);
+  animation: gold-metallic-shift 4s ease-in-out infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gold-metallic-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 240, 180, 0.6),
+    inset 0 -1px 2px rgba(140, 100, 20, 0.3),
+    0 8px 30px rgba(212, 168, 67, 0.35);
+}
+
+@keyframes gold-metallic-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ─── Shiny CTA wrapper ─── */
+@keyframes shiny-cta-glow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(212, 168, 67, 0.2), 0 0 60px rgba(212, 168, 67, 0.06);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 168, 67, 0.35), 0 0 90px rgba(212, 168, 67, 0.12);
+  }
+}
+
+@keyframes shiny-cta-sweep {
   0% { left: -100%; }
-  60% { left: 120%; }
-  100% { left: 120%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+
+.shiny-cta-wrapper {
+  position: relative;
+  border-radius: 0.75rem;
+  animation: shiny-cta-glow 3s ease-in-out infinite;
+}
+
+.shiny-cta-wrapper > button {
+  position: relative;
+  overflow: hidden;
+}
+
+.shiny-cta-wrapper > button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 248, 200, 0.45) 50%, transparent 100%);
+  animation: shiny-cta-sweep 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 /* User JSON Spec Styles */
@@ -729,7 +865,8 @@ body.modal-open > *:not([data-modal-overlay]) {
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
-  z-index: 1; /* For pseudo-element */
+  z-index: 1;
+  /* For pseudo-element */
 }
 
 .shiny-button-spec::after {
@@ -754,6 +891,11 @@ body.modal-open > *:not([data-modal-overlay]) {
 }
 
 @keyframes shiny-sweep-hover {
-  0% { left: -100%; }
-  100% { left: 200%; }
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }
