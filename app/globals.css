@@ -60,6 +60,13 @@ body.modal-open>*:not([data-modal-overlay]) {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+    font-size: 14px;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 16px;
+    }
   }
 }
 
@@ -172,7 +179,7 @@ body.modal-open>*:not([data-modal-overlay]) {
 
 @media (max-width: 768px) {
   .hero-bg {
-    background-image: url('/images/a1.webp');
+    background-image: url('/images/a1.png');
     background-position: top center;
     min-height: 100vh !important;
   }
@@ -250,12 +257,19 @@ body.modal-open>*:not([data-modal-overlay]) {
   background: var(--gold);
   color: #0a0a0a;
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   letter-spacing: 0.02em;
   text-decoration: none;
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .hero-cta-btn {
+    padding: 1.15rem;
+    font-size: 1.05rem;
+  }
 }
 
 .hero-cta-btn:hover {
@@ -307,7 +321,7 @@ body.modal-open>*:not([data-modal-overlay]) {
   background: transparent;
   position: relative;
   overflow: hidden;
-  padding: 2rem 0 3rem;
+  padding: 0;
 }
 
 
@@ -418,7 +432,6 @@ body.modal-open>*:not([data-modal-overlay]) {
 /* ─── CTA Section (light bg) ─── */
 .cta-diferenciado {
   background: #f5f5f7;
-  padding: 3rem 1.5rem;
 }
 
 /* ─── Wave Separator ─── */

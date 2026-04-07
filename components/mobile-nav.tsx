@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
+import { MentoriaModal } from "./mentoria-modal"
 
 const NAV_LINKS = [
   ["#hero", "Início"],
@@ -82,9 +83,11 @@ export function MobileNav() {
             borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
           }}
         >
-          <span style={{ fontWeight: 900, fontSize: "1.2rem", letterSpacing: "0.03em" }}>
-            <span style={{ color: "#D4A843" }}>SUPREMUS</span>
-          </span>
+          <img
+            src="/images/Logo-supremos-vertical.png"
+            alt="SUPREMUS"
+            style={{ height: 32, width: "auto", objectFit: "contain" }}
+          />
           <button
             type="button"
             onClick={() => setOpen(false)}
@@ -127,25 +130,8 @@ export function MobileNav() {
         </nav>
 
         {/* CTA */}
-        <div style={{ padding: "0 24px", marginTop: "auto", marginBottom: 40 }}>
-          <a
-            href="#ingressos"
-            onClick={() => setOpen(false)}
-            style={{
-              display: "block",
-              width: "100%",
-              textAlign: "center",
-              fontSize: "0.85rem",
-              fontWeight: 900,
-              padding: "16px 24px",
-              borderRadius: 8,
-              backgroundColor: "#D4A843",
-              color: "#0a0a0a",
-              textDecoration: "none",
-            }}
-          >
-            Resgatar 50% de desconto
-          </a>
+        <div style={{ padding: "0 24px", marginTop: "auto", marginBottom: 40 }} onClick={() => setOpen(false)}>
+          <MentoriaModal />
         </div>
       </div>
     </>

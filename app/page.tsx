@@ -86,21 +86,21 @@ export default function SupremusPage() {
         {/* ─── HERO ─── */}
         <section
           id="hero"
-          className="hero-bg relative flex flex-col pt-16 md:pt-20 pb-4 overflow-x-hidden"
+          className="hero-bg relative flex flex-col pt-16 md:pt-20 pb-24 overflow-x-hidden"
           style={{ minHeight: "100vh" }}
         >
           {/* Suavização apenas na base para a divisão de seções */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a1a10] pointer-events-none z-0" />
-          {/* Mobile: gradiente extra para legibilidade sobre a foto */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1a10]/30 via-transparent to-[#0a1a10]/90 pointer-events-none z-0 md:hidden" />
+          {/* Mobile: gradiente extra reforçado para deixar o verde mais escuro e legível */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1a10]/60 via-[#0a1a10]/40 to-[#0a1a10]/95 pointer-events-none z-0 md:hidden" />
 
           {/* Content */}
           <div className="flex-1 flex flex-col items-center justify-end md:justify-center text-center px-4 md:px-6 py-8 md:py-12 relative z-10">
-            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-5 py-5 md:px-14 md:py-8 w-full max-w-[1100px] shadow-lg">
+            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-4 py-24 md:px-10 md:py-6 w-full max-w-[950px] shadow-lg">
               <img
                 src="/images/Supremus_logo.png"
                 alt="Supremus do Mercado Imobiliário"
-                className="w-72 md:w-[28rem] mb-3 md:mb-4"
+                className="w-56 md:w-[28rem] mb-3 md:mb-4"
               />
               <div className="flex items-center gap-2 md:gap-3 text-[12px] md:text-[16px] text-white/90 mb-3 md:mb-4 font-medium">
                 <span className="tracking-wide uppercase">Mentoria Executiva - Com Altemir Rocha</span>
@@ -126,13 +126,13 @@ export default function SupremusPage() {
 
         </section>
 
-        {/* ─── CAROUSEL DE PARTICIPANTES ─── */}
-        <div className="relative z-10 -mt-12 md:-mt-16">
+        {/* ─── CARROSSEL DE PARTICIPANTES ─── */}
+        <div className="relative z-10 -mt-[50px] md:-mt-[65px] bg-transparent">
           <MarqueeCarousel />
         </div>
 
-        {/* ─── SOBRE O EVENTO ─── */}
-        <section id="sobre" className="sobre-section py-20 md:py-28">
+        {/* ─── SOBRE — O Que é o Supremus ─── */}
+        <section id="sobre" className="sobre-section py-16 md:py-32 relative z-10 -mt-[2px]">
           <div className="max-w-6xl mx-auto px-6">
             {/* Scroll icon */}
             <div className="flex justify-center mb-10">
@@ -147,10 +147,10 @@ export default function SupremusPage() {
             <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16">
               {/* Left — heading */}
               <div className="md:w-1/2 shrink-0">
-                <p className="sobre-label uppercase mb-4">
+                <p className="sobre-label uppercase mb-3 text-[10px] md:text-sm">
                   O QUE É O SUPREMUS DO MERCADO IMOBILIÁRIO?
                 </p>
-                <h2 className="sobre-heading font-black leading-tight">
+                <h2 className="sobre-heading font-black leading-tight text-[22px] md:text-[40px]">
                   A mentoria executiva que organiza, estrutura e eleva sua operação ao nível de uma máquina de vendas com autoridade, processos e equipe de alta performance
                 </h2>
               </div>
@@ -209,25 +209,24 @@ export default function SupremusPage() {
         </section>
 
         {/* ─── "VOCÊ QUER VERDADEIRAMENTE..." ─── */}
-        <section className="cta-diferenciado pb-[100px] md:pb-[160px] relative z-10 px-6">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
-            <p className="text-gray-600 text-base md:text-xl text-center md:text-left italic max-w-md leading-relaxed">
+        <section className="cta-diferenciado py-24 md:py-52 relative z-10 px-6 -mt-[2px]">
+          <div className="max-w-5xl mx-auto flex flex-col items-center justify-center gap-6">
+            <p className="text-gray-600 text-base md:text-2xl text-center italic max-w-[800px] leading-relaxed">
               Você quer verdadeiramente ser diferenciado ou quer ficar só pensando que é?
             </p>
-            <a
-              href="#ingressos"
-              className="hero-cta-btn gold-btn-shiny w-full md:w-auto"
+            <div 
+              className="hero-cta-btn opacity-0 pointer-events-none w-full md:w-auto"
               style={{ maxWidth: "380px", padding: "1.1rem 2.5rem" }}
             >
               Quero garantir a promoção
-            </a>
+            </div>
           </div>
         </section>
 
         {/* ─── EDIÇÃO 2026 — Vídeo com gradiente azul ─── */}
-        <section id="edicao" className="edicao-section pt-[140px] md:pt-[290px] overflow-hidden relative flex flex-col justify-center z-20 -mt-[120px] md:-mt-[190px] min-h-0 md:min-h-screen">
+        <section id="edicao" className="edicao-section pt-24 md:pt-[290px] overflow-hidden relative flex flex-col justify-center z-20 -mt-12 md:-mt-[120px] min-h-0 md:min-h-screen">
           {/* WAVE (Inside top - White to Green transition) */}
-          <div className="absolute left-0 right-0 w-full pointer-events-none z-20" style={{ top: "-1px", transform: "scaleY(-1)" }}>
+          <div className="hidden md:block absolute left-0 right-0 w-full pointer-events-none z-20" style={{ top: "-1px", transform: "scaleY(-1)" }}>
             <svg viewBox="0 0 1440 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="w-full block h-[60px] md:h-[130px]">
               <path
                 d="M0,40 C600,150 900,0 1440,60 L1440,150 L0,150 Z"
@@ -253,8 +252,8 @@ export default function SupremusPage() {
           <div className="absolute bottom-[10%] -right-[10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#D4A843]/15 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0" />
 
           {/* Texts (Reduzidos para caber perfeitamente com o vídeo na tela) */}
-          <div className="max-w-[1400px] w-full mx-auto text-center flex flex-col items-center relative z-10 px-6 mb-4 md:mb-6 shrink-0" style={{ transform: "translateY(-58px)" }}>
-            <img src="/images/Supremus_logo.png" alt="Supremus" className="h-16 md:h-20 lg:h-24 w-auto object-contain mb-1" />
+          <div className="max-w-[1400px] w-full mx-auto text-center flex flex-col items-center relative z-10 px-6 mb-4 md:mb-6 shrink-0" style={{ transform: "translateY(0)" }}>
+            <img src="/images/Supremus_logo.png" alt="Supremus" className="h-12 md:h-20 lg:h-24 w-auto object-contain mb-1" />
             <p className="text-white/70 text-[11px] md:text-sm uppercase tracking-wider font-semibold max-w-2xl mx-auto px-4">
               O ponto onde sua operação começa a crescer de verdade
             </p>
@@ -270,7 +269,7 @@ export default function SupremusPage() {
         </section>
 
         {/* ─── RESULTADOS + DEPOIMENTOS ─── */}
-        <section id="depoimentos" className="relative pt-24 md:pt-32 pb-40 md:pb-52 px-6 overflow-hidden bg-[#f5f5f7]">
+        <section id="depoimentos" className="relative pt-24 md:pt-32 pb-64 md:pb-52 px-6 overflow-hidden bg-[#f5f5f7]">
           <div className="max-w-[1200px] mx-auto relative z-10">
             {/* Header: título + texto lado a lado */}
             <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16 mb-14">
@@ -327,7 +326,7 @@ export default function SupremusPage() {
           </div>
 
           {/* WAVE (Inside - White to Green transition) */}
-          <div className="absolute left-0 right-0 w-full pointer-events-none z-10" style={{ top: "-1px", transform: "scaleY(-1)" }}>
+          <div className="hidden md:block absolute left-0 right-0 w-full pointer-events-none z-10" style={{ top: "-1px", transform: "scaleY(-1)" }}>
             <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" style={{ height: "auto" }}>
               <path
                 d="M0,40 C360,100 720,0 1080,60 C1260,80 1380,40 1440,50 L1440,100 L0,100 Z"
@@ -343,46 +342,48 @@ export default function SupremusPage() {
           <div className="max-w-[1300px] w-full mx-auto relative z-10">
             <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-center">
               {/* Left — images (Overlapping layout - Centralizado à esquerda) */}
-              <div className="md:w-1/2 relative min-h-[380px] md:min-h-[700px] w-full flex-shrink-0">
-                {/* Back Image (Room) - Portrait e movida mais para baixo */}
-                <div className="absolute top-[10%] md:top-[20%] left-[8%] md:left-[10%] w-[50%] md:w-[45%] aspect-[3/4] shadow-[0_15px_40px_rgba(0,0,0,0.4)] z-0">
+              <div className="md:w-1/2 relative min-h-[680px] md:min-h-[750px] w-full flex-shrink-0">
+                {/* Back Image (Room) - Portrait e movida para o topo */}
+                <div className="absolute top-[2%] md:top-[8%] left-[5%] md:left-[10%] w-[58%] md:w-[46%] aspect-[3/4] shadow-[0_15px_40px_rgba(0,0,0,0.4)] z-0">
                   <img
                     src="/images/vertical-alinhamento.jpeg"
                     alt="Sala mentoria supremus"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-lg md:rounded-none"
                     loading="lazy"
                   />
                 </div>
-
-                {/* Front Image (Yacht) - Menor e vinculada com o selo */}
-                <div className="absolute top-[50%] md:top-[55%] left-[25%] md:left-[22%] w-[70%] md:w-[65%] aspect-[16/10] shadow-[0_25px_50px_rgba(0,0,0,0.6)] z-10 overflow-hidden">
-                  <img
-                    src="/images/bolsa-supremus-alto-nivel.jpg"
-                    alt="Experiência supremus"
-                    className="w-full h-full object-cover"
-                    style={{ transform: "scale(1.15)", objectPosition: "center 70%" }}
-                    loading="lazy"
-                  />
-
-                </div>
-
-                {/* Golden Seal - Sobreposto entre as duas imagens */}
-                <div className="absolute z-20" style={{ top: "48%", left: "14%", transform: "translate(-25%, -25%)" }}>
-                  <img
-                    src="/images/supremus-marca.png"
-                    alt="Selo Experiência Supremus"
-                    className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
-                    loading="lazy"
-                  />
+ 
+                {/* Front Image (Yacht) - Mais para baixo para criar o degrau */}
+                <div className="absolute top-[45%] md:top-[58%] left-[12%] md:left-[22%] w-[78%] md:w-[68%] aspect-[16/10] shadow-[0_25px_50px_rgba(0,0,0,0.6)] z-10">
+                  {/* Container de Recorte: Mantém o tamanho original e o zoom clipado */}
+                  <div className="w-full h-full overflow-hidden rounded-lg md:rounded-none relative">
+                    <img
+                      src="/images/bolsa-supremus-alto-nivel.jpg"
+                      alt="Experiência supremus"
+                      className="w-full h-full object-cover"
+                      style={{ transform: "scale(1.15)", objectPosition: "center 70%" }}
+                      loading="lazy"
+                    />
+                  </div>
+                  
+                  {/* Golden Seal - Posicionado exatamente no canto superior esquerdo (fora do overflow-hidden) */}
+                  <div className="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 z-20">
+                    <img
+                      src="/images/supremus-marca.png"
+                      alt="Selo Experiência Supremus"
+                      className="w-20 h-20 md:w-36 md:h-36 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
 
               {/* Right — text */}
               <div className="md:w-1/2 flex flex-col justify-center">
-                <p className="text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-4 text-white/60">
+                <p className="text-[10px] md:text-sm font-bold tracking-[0.25em] uppercase mb-4 text-white/60">
                   MENTORIA EXECUTIVA, APLICADA NA PRÁTICA
                 </p>
-                <h2 className="text-4xl md:text-5xl lg:text-[4rem] font-black uppercase mb-8 leading-tight gold-shiny">
+                <h2 className="text-[26px] md:text-5xl lg:text-[4rem] font-black uppercase mb-6 md:mb-8 leading-tight gold-shiny">
                   ALINHAMENTO, DIREÇÃO E CRESCIMENTO<br />
                 </h2>
                 <p className="text-white/85 text-lg md:text-[1.1rem] leading-relaxed mb-8">
@@ -440,8 +441,8 @@ export default function SupremusPage() {
           </div>
 
           {/* Card flutuante */}
-          <div className="relative z-10 flex w-full max-w-[800px] mx-auto justify-center mt-[-15vh] md:mt-[-20vh]">
-            <div className="bg-white rounded-3xl p-8 md:p-14 text-center w-full shadow-[0_15px_60px_rgba(0,0,0,0.12)] flex flex-col items-center">
+          <div className="relative z-10 flex w-full max-w-[800px] mx-auto justify-center mt-[-8vh] md:mt-[-20vh]">
+            <div className="bg-white rounded-3xl p-6 md:p-14 text-center w-full shadow-[0_15px_60px_rgba(0,0,0,0.12)] flex flex-col items-center">
               <p className="text-[11px] md:text-xs font-bold tracking-[0.2em] uppercase mb-4 text-gray-500">
                 PROCESSO DE APLICAÇÃO
               </p>
@@ -455,14 +456,8 @@ export default function SupremusPage() {
                 O acesso acontece mediante aplicação e análise de perfil.
               </p>
 
-              <div className="shiny-cta-wrapper">
-                <a
-                  href="#hero"
-                  className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[550px] text-center p-3 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide cursor-pointer no-underline"
-                  style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
-                >
-                  QUERO A MENTORIA SUPREMUS
-                </a>
+              <div className="shiny-cta-wrapper w-full max-w-[550px] flex justify-center">
+                <MentoriaModal />
               </div>
             </div>
           </div>
@@ -494,7 +489,7 @@ export default function SupremusPage() {
               <p className="text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-4 text-white/40">
                 QUEM É SEU MENTOR
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-[2.8rem] font-black mb-3 leading-tight gold-shiny">
+              <h2 className="text-2xl md:text-4xl lg:text-[2.8rem] font-black mb-3 leading-tight gold-shiny">
                 Altemir Rocha
               </h2>
               <p className="text-white/60 text-base md:text-lg italic mb-8">

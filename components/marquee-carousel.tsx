@@ -46,7 +46,7 @@ export function MarqueeCarousel() {
   }, [])
 
   return (
-    <div ref={carouselRef} className="carousel-wrapper w-full overflow-hidden relative" style={{ background: "#f5f5f7", zIndex: 1 }}>
+    <div ref={carouselRef} className="carousel-wrapper w-full overflow-hidden relative" style={{ background: "var(--navy-dark)", zIndex: 1 }}>
       <div
         className="absolute inset-x-0 top-0 pointer-events-none -z-10"
         style={{ height: "calc(100% - 3rem)", backgroundColor: "var(--navy-dark)" }}
