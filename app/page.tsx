@@ -208,18 +208,18 @@ export default function SupremusPage() {
           </div>
         </section>
 
-        {/* ─── "VOCÊ QUER VERDADEIRAMENTE..." ─── */}
-        <section className="cta-diferenciado py-24 md:py-52 relative z-10 px-6 -mt-[2px]">
-          <div className="max-w-5xl mx-auto flex flex-col items-center justify-center gap-6">
-            <p className="text-gray-600 text-base md:text-2xl text-center italic max-w-[800px] leading-relaxed">
-              Você quer verdadeiramente ser diferenciado ou quer ficar só pensando que é?
+        <section className="cta-diferenciado pt-6 md:pt-8 pb-32 md:pb-[170px] relative z-10 px-6 -mt-[2px]">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 text-center md:text-left">
+            <p className="text-gray-600 text-sm md:text-xl italic leading-relaxed max-w-[500px]">
+              "Chegou o seu momento de ser supremus no mercado imobiliário"
             </p>
-            <div 
-              className="hero-cta-btn opacity-0 pointer-events-none w-full md:w-auto"
-              style={{ maxWidth: "380px", padding: "1.1rem 2.5rem" }}
+            <a
+              href="#hero"
+              className="gold-metallic-btn rounded-xl font-bold block w-full md:w-auto text-center py-3 px-6 md:py-3.5 md:px-7 text-[12px] md:text-[14px] tracking-wide cursor-pointer flex-shrink-0 shadow-lg"
+              style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
             >
-              Quero garantir a promoção
-            </div>
+              QUERO A MENTORIA SUPREMUS
+            </a>
           </div>
         </section>
 
