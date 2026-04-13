@@ -118,9 +118,9 @@ export default function SupremusPage() {
               <MentoriaModal />
             </div>
             <img
-              src="/images/logo-ibraciv2.svg"
+              src="/images/ibraciv_logo.png"
               alt="IBRACIV"
-              className="h-4 md:h-6 mt-6 md:mt-8 brightness-0 invert opacity-80 relative z-20"
+              className="h-8 md:h-11 mt-6 md:mt-8 brightness-0 invert opacity-80 relative z-20"
             />
           </div>
 
@@ -352,7 +352,7 @@ export default function SupremusPage() {
                     loading="lazy"
                   />
                 </div>
- 
+
                 {/* Front Image (Yacht) - Mais para baixo para criar o degrau */}
                 <div className="absolute top-[45%] md:top-[58%] left-[12%] md:left-[22%] w-[78%] md:w-[68%] aspect-[16/10] shadow-[0_25px_50px_rgba(0,0,0,0.6)] z-10">
                   {/* Container de Recorte: Mantém o tamanho original e o zoom clipado */}
@@ -365,7 +365,7 @@ export default function SupremusPage() {
                       loading="lazy"
                     />
                   </div>
-                  
+
                   {/* Golden Seal - Posicionado exatamente no canto superior esquerdo (fora do overflow-hidden) */}
                   <div className="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 z-20">
                     <img
@@ -531,9 +531,9 @@ export default function SupremusPage() {
               tem paixão por vencer.
             </p>
             <img
-              src="/images/logo-ibraciv2.svg"
+              src="/images/ibraciv_logo_silver.png"
               alt="IBRACIV"
-              className="h-5 md:h-6 opacity-60 hover:opacity-100 transition-opacity"
+              className="h-6 md:h-10 opacity-60 hover:opacity-100 transition-opacity"
             />
           </div>
         </section>
