@@ -62,7 +62,7 @@ const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
       field: "q4",
       options: [
         "Até R$30 mil",
-        "Entre R$30 mil e R$80 mil",
+        "Entre R$50 mil e R$80 mil",
         "Entre R$80 mil e R$200 mil",
         "Entre R$200 mil e R$500 mil",
         "Acima de R$500 mil",
@@ -137,7 +137,7 @@ const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
       field: "q4",
       options: [
         "Até R$30 mil",
-        "Entre R$30 mil e R$80 mil",
+        "Entre R$50 mil e R$80 mil",
         "Entre R$80 mil e R$200 mil",
         "Entre R$200 mil e R$500 mil",
         "Acima de R$500 mil",
@@ -174,6 +174,12 @@ const EQUIPE_ACIMA_5 = [
   "Entre 10 e 20 corretores",
   "Mais de 20 corretores",
 ]
+
+const SUPREMUS_50_TRUE: Partial<Record<Exclude<FlowType, null>, string[]>> = {
+  imobiliaria: ["Entre R$50 mil e R$80 mil", "Entre R$80 mil e R$200 mil", "Entre R$200 mil e R$500 mil", "Acima de R$500 mil"],
+  corretor:    ["Entre R$50 mil e R$100 mil", "Entre R$100 mil e R$200 mil", "Acima de R$200 mil"],
+  investidor:  ["Entre R$50 mil e R$80 mil", "Entre R$80 mil e R$200 mil", "Entre R$200 mil e R$500 mil", "Acima de R$500 mil"],
+}
 
 /* ─────────────────────────── Helpers ─────────────────────────── */
 
@@ -334,15 +340,24 @@ export function MentoriaModal() {
       dto.estrutura_operacao = form.q5
     }
 
+    dto.supremus_50 = String(
+      flow !== null && (SUPREMUS_50_TRUE[flow]?.includes(form.q4) ?? false)
+    )
+
+    const WEBHOOKS: Record<Exclude<FlowType, null>, string> = {
+      imobiliaria: "https://webhook.sellflux.app/v2/webhook/custom/acdf82941b43b2655865954d15764b61",
+      corretor:    "https://webhook.sellflux.app/v2/webhook/custom/2d2fccc0b0dcbaa289780489a678065e",
+      investidor:  "https://webhook.sellflux.app/v2/webhook/custom/0b0d4cb8f5d17ee4500196921349de8c",
+    }
+
+    if (!flow) return
+
     try {
-      await fetch(
-        "https://webhook.sellflux.app/v2/webhook/custom/4edbeb441166d774a334063bfdce5f67",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(dto),
-        }
-      )
+      await fetch(WEBHOOKS[flow], {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dto),
+      })
     } catch {
       // silently fail — don't block UX
     }
