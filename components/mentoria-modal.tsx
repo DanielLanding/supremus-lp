@@ -344,21 +344,33 @@ export function MentoriaModal() {
       flow !== null && (SUPREMUS_50_TRUE[flow]?.includes(form.q4) ?? false)
     )
 
-    const WEBHOOKS: Record<Exclude<FlowType, null>, string> = {
-      imobiliaria: "https://webhook.sellflux.app/v2/webhook/custom/acdf82941b43b2655865954d15764b61",
-      corretor:    "https://webhook.sellflux.app/v2/webhook/custom/2d2fccc0b0dcbaa289780489a678065e",
-      investidor:  "https://webhook.sellflux.app/v2/webhook/custom/0b0d4cb8f5d17ee4500196921349de8c",
+    const WEBHOOKS: Record<Exclude<FlowType, null>, { legacy: string; supremus50k: string }> = {
+      imobiliaria: {
+        legacy: "https://webhook.sellflux.app/v2/webhook/custom/acdf82941b43b2655865954d15764b61",
+        supremus50k: "https://webhook.sellflux.app/v2/webhook/custom/0c36005f3a18978f355dcbec05562862",
+      },
+      corretor: {
+        legacy: "https://webhook.sellflux.app/v2/webhook/custom/2d2fccc0b0dcbaa289780489a678065e",
+        supremus50k: "https://webhook.sellflux.app/v2/webhook/custom/acf567b71926de1717a5575303627df2",
+      },
+      investidor: {
+        legacy: "https://webhook.sellflux.app/v2/webhook/custom/0b0d4cb8f5d17ee4500196921349de8c",
+        supremus50k: "https://webhook.sellflux.app/v2/webhook/custom/b4a7dc2e09540a0b3c74dc03a4ca98e0",
+      },
     }
 
     if (!flow) return
 
+    const webhookGroup = dto.supremus_50 === "true" ? "supremus50k" : "legacy"
+
     try {
-      await fetch(WEBHOOKS[flow], {
+      await fetch(WEBHOOKS[flow][webhookGroup], {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dto),
       })
-    } catch {
+    } catch (error) {
+      console.error("[mentoria] erro ao enviar webhook:", error)
       // silently fail — don't block UX
     }
   }
