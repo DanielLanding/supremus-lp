@@ -309,6 +309,9 @@ export function MentoriaModal() {
         setTimeout(() => {
           setSubmitting(false)
           setDone(true)
+          setTimeout(() => {
+            window.location.href = "/obrigado"
+          }, 1500)
         }, 1500)
       })
       return
@@ -524,12 +527,10 @@ export function MentoriaModal() {
                         Sua aplicação será analisada pela equipe. Caso seu perfil esteja alinhado com a Supremus, você será direcionado para a próxima etapa.
                       </p>
                     </div>
-                    <button
-                      onClick={closeModal}
-                      className="mt-2 bg-[#D4A843] hover:bg-[#c49a3a] text-black font-bold py-3 px-8 rounded-xl transition-colors text-sm tracking-wide"
-                    >
-                      FECHAR
-                    </button>
+                    <div className="flex flex-col items-center gap-2 mt-2">
+                      <div className="w-6 h-6 rounded-full border-2 border-white/10 border-t-[#D4A843] animate-spin" />
+                      <p className="text-white/40 text-xs tracking-wide">Redirecionando...</p>
+                    </div>
                   </div>
                 ) : step === 1 ? (
                   /* ── Step 1: Dados pessoais ── */

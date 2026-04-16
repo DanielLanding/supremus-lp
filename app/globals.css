@@ -407,6 +407,21 @@ body.modal-open>*:not([data-modal-overlay]) {
   display: block;
 }
 
+/* ─── Scrollbar global ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a1a10;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a5c2a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a7a3a;
+}
+
 /* Utilitário para esconder scrollbar */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
