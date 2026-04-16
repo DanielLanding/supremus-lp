@@ -293,7 +293,7 @@ export default function SupremusPage() {
           {/* Vídeo Vimeo */}
           <div className="w-full max-w-[1180px] mx-auto px-3 md:px-10 flex md:flex-1 flex-col justify-end relative z-10 pb-4 md:pb-0 overflow-hidden">
             <VimeoEmbed
-              videoUrl="https://player.vimeo.com/video/1183200112?h=55fe243ca9&badge=0&autopause=0&player_id=0&app_id=58479"
+              videoUrl="https://player.vimeo.com/video/1183200112?h=55fe243ca9&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1"
               title="VÍDEO VENDA - MENTORIA SUPREMUS"
             />
           </div>
