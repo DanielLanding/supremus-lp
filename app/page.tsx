@@ -132,11 +132,11 @@ export default function SupremusPage() {
 
           {/* Content */}
           <div className="flex-1 flex flex-col items-center justify-end md:justify-center text-center px-4 md:px-6 py-8 md:py-12 relative z-10">
-            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-4 py-16 md:px-10 md:py-5 w-full max-w-[920px] shadow-lg">
+            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-4 py-16 md:px-10 md:py-5 w-full max-w-[780px] shadow-lg">
               <img
                 src="/images/Supremus_logo.png"
                 alt="Supremus do Mercado Imobiliário"
-                className="w-36 md:w-[18rem] mb-2 md:mb-3"
+                className="w-28 md:w-[15rem] mb-2 md:mb-3"
               />
               <div className="flex items-center gap-2 md:gap-3 text-[11px] md:text-[14px] text-white/90 mb-2 md:mb-3 font-medium">
                 <span className="tracking-wide uppercase">Mentoria Executiva - Com Altemir Rocha</span>
