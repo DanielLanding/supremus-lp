@@ -421,7 +421,7 @@ export function MentoriaModal() {
     return (
       <button
         onClick={openModal}
-        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[550px] text-center py-4 px-6 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide cursor-pointer"
+        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
             style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
       >
         QUERO A MENTORIA SUPREMUS
@@ -433,7 +433,7 @@ export function MentoriaModal() {
     <>
       <button
         onClick={openModal}
-        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[550px] text-center p-3 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide cursor-pointer"
+        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
             style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
       >
         QUERO A MENTORIA SUPREMUS

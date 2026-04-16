@@ -376,7 +376,7 @@ body.modal-open>*:not([data-modal-overlay]) {
   cursor: grab;
   user-select: none;
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 .sobre-fotos-carousel.active {

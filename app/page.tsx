@@ -24,32 +24,68 @@ const TESTIMONIALS = [
   },
 ]
 
+const FOTO_SOURCES = [
+  "/images/Img-supremus-cr-01.jpeg",
+  "/images/Img-supremus-cr-02.jpeg",
+  "/images/Img-supremus-cr-03.jpeg",
+  "/images/Img-supremus-cr-04.jpeg",
+]
+const FOTOS_DOUBLED = [...FOTO_SOURCES, ...FOTO_SOURCES]
+
 export default function SupremusPage() {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [isMouseDown, setIsMouseDown] = useState(false)
+  const isDragging = useRef(false)
   const startX = useRef(0)
-  const scrollLeft = useRef(0)
+  const scrollLeftRef = useRef(0)
+  const rafRef = useRef<number | null>(null)
+  const [isMouseDown, setIsMouseDown] = useState(false)
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const speed = 0.3
+    let pos = 0
+
+    const tick = () => {
+      if (!isDragging.current && el) {
+        pos += speed
+        const half = el.scrollWidth / 2
+        if (pos >= half) pos -= half
+        el.scrollLeft = pos
+      } else {
+        pos = el.scrollLeft
+      }
+      rafRef.current = requestAnimationFrame(tick)
+    }
+
+    rafRef.current = requestAnimationFrame(tick)
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [])
 
   const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault()
+    isDragging.current = true
     setIsMouseDown(true)
     const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX
     startX.current = pageX - (scrollRef.current?.offsetLeft || 0)
-    scrollLeft.current = scrollRef.current?.scrollLeft || 0
+    scrollLeftRef.current = scrollRef.current?.scrollLeft || 0
   }
 
   const handleMouseLeaveOrUp = () => {
+    isDragging.current = false
     setIsMouseDown(false)
   }
 
   const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isMouseDown) return
+    if (!isDragging.current) return
     e.preventDefault()
     const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX
     const x = pageX - (scrollRef.current?.offsetLeft || 0)
     const walk = (x - startX.current) * 1.5
     if (scrollRef.current) {
-      scrollRef.current.scrollLeft = scrollLeft.current - walk
+      scrollRef.current.scrollLeft = scrollLeftRef.current - walk
     }
   }
   return (
@@ -96,23 +132,23 @@ export default function SupremusPage() {
 
           {/* Content */}
           <div className="flex-1 flex flex-col items-center justify-end md:justify-center text-center px-4 md:px-6 py-8 md:py-12 relative z-10">
-            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-4 py-24 md:px-10 md:py-6 w-full max-w-[950px] shadow-lg">
+            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-4 py-16 md:px-10 md:py-5 w-full max-w-[920px] shadow-lg">
               <img
                 src="/images/Supremus_logo.png"
                 alt="Supremus do Mercado Imobiliário"
-                className="w-56 md:w-[28rem] mb-3 md:mb-4"
+                className="w-36 md:w-[18rem] mb-2 md:mb-3"
               />
-              <div className="flex items-center gap-2 md:gap-3 text-[12px] md:text-[16px] text-white/90 mb-3 md:mb-4 font-medium">
+              <div className="flex items-center gap-2 md:gap-3 text-[11px] md:text-[14px] text-white/90 mb-2 md:mb-3 font-medium">
                 <span className="tracking-wide uppercase">Mentoria Executiva - Com Altemir Rocha</span>
               </div>
-              <h1 className="text-[18px] md:text-[27px] lg:text-[32px] font-black uppercase leading-[1.35] md:leading-[1.4] text-white text-center max-w-[850px] mb-3 md:mb-4">
+              <h1 className="text-[16px] md:text-[23px] lg:text-[27px] font-black uppercase leading-[1.35] md:leading-[1.4] text-white text-center w-full mb-2 md:mb-3">
                 ESTRUTURE SUA OPERAÇÃO COM QUEM JÁ VENDEU MAIS DE{" "}
                 <span className="text-[#f4c264]">
                   R$ 2 BILHÕES
                 </span>{" "}
                 EM IMÓVEIS
               </h1>
-              <p className="text-white/70 text-[13px] md:text-[16px] text-center max-w-[650px] mb-4 md:mb-5 leading-relaxed">
+              <p className="text-white/70 text-[12px] md:text-[14px] text-center w-full mb-3 md:mb-4 leading-relaxed">
                 12 MESES COM ALTEMIR ROCHA DENTRO DA SUA OPERAÇÃO. MENOS TEORIA. MAIS DIREÇÃO, AJUSTE E CRESCIMENTO REAL.
               </p>
               <MentoriaModal />
@@ -127,13 +163,13 @@ export default function SupremusPage() {
         </section>
 
         {/* ─── CARROSSEL DE PARTICIPANTES ─── */}
-        <div className="relative z-10 -mt-[50px] md:-mt-[65px] bg-transparent">
+        <div className="relative z-10 -mt-[90px] md:-mt-[110px] bg-transparent">
           <MarqueeCarousel />
         </div>
 
         {/* ─── SOBRE — O Que é o Supremus ─── */}
         <section id="sobre" className="sobre-section py-16 md:py-32 relative z-10 -mt-[2px]">
-          <div className="max-w-6xl mx-auto px-6">
+          <div className="w-full px-16 md:px-28">
             {/* Scroll icon */}
             <div className="flex justify-center mb-10">
               <div className="scroll-icon text-gray-400">
@@ -150,27 +186,27 @@ export default function SupremusPage() {
                 <p className="sobre-label uppercase mb-3 text-[10px] md:text-sm">
                   O QUE É O SUPREMUS DO MERCADO IMOBILIÁRIO?
                 </p>
-                <h2 className="sobre-heading font-black leading-tight text-[22px] md:text-[40px]">
+                <h2 className="sobre-heading font-black leading-tight text-[14px] md:text-[24px]">
                   A mentoria executiva que organiza, estrutura e eleva sua operação ao nível de uma máquina de vendas com autoridade, processos e equipe de alta performance
                 </h2>
               </div>
 
               {/* Right — paragraphs */}
               <div className="flex-1">
-                <p className="sobre-lead text-lg mb-5 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[13px] md:text-[15px] mb-2 leading-relaxed font-semibold">
                   Na Supremus, o Altemir Rocha entra diretamente na sua operação e começa a mexer no que realmente impacta o seu faturamento.
                 </p>
-                <p className="sobre-lead text-lg mb-5 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[13px] md:text-[15px] mb-2 leading-relaxed font-semibold">
                   Já na primeira reunião, você sai com ajustes práticos e decisões que começam a refletir no resultado.
                 </p>
-                <p className="sobre-lead text-lg mb-5 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[13px] md:text-[15px] mb-2 leading-relaxed font-semibold">
                   Ao longo dos 12 meses, sua operação é organizada, estruturada e direcionada para crescer com consistência.
                 </p>
-                <p className="sobre-lead text-lg mb-5 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[13px] md:text-[15px] mb-2 leading-relaxed font-semibold">
                   Sem teoria de guru.<br />
                   Sem tentativa.
                 </p>
-                <p className="sobre-lead text-lg leading-relaxed font-semibold">
+                <p className="sobre-lead text-[13px] md:text-[15px] leading-relaxed font-semibold">
                   É método que funciona, treinamento aplicado e acompanhamento próximo.
                 </p>
               </div>
@@ -189,16 +225,11 @@ export default function SupremusPage() {
             onTouchEnd={handleMouseLeaveOrUp}
             onTouchMove={handleMouseMove}
           >
-            {[
-              "/images/Img-supremus-cr-01.jpeg",
-              "/images/Img-supremus-cr-02.jpeg",
-              "/images/Img-supremus-cr-03.jpeg",
-              "/images/Img-supremus-cr-04.jpeg",
-            ].map((src, i) => (
+            {FOTOS_DOUBLED.map((src, i) => (
               <div key={i} className="sobre-foto-carousel-item">
                 <img
                   src={src}
-                  alt={`Participantes do evento ${i + 1}`}
+                  alt={`Participantes do evento ${(i % FOTO_SOURCES.length) + 1}`}
                   className="sobre-foto-full-img"
                   draggable={false}
                   loading="lazy"
@@ -262,8 +293,8 @@ export default function SupremusPage() {
           {/* Vídeo Vimeo */}
           <div className="w-full max-w-[1180px] mx-auto px-3 md:px-10 flex md:flex-1 flex-col justify-end relative z-10 pb-4 md:pb-0 overflow-hidden">
             <VimeoEmbed
-              videoUrl="https://player.vimeo.com/video/1179439269?h=6f631d6963&badge=0&autopause=0&player_id=0&app_id=58479"
-              title="GMI 2026 - Patrocínio"
+              videoUrl="https://player.vimeo.com/video/1183200112?h=55fe243ca9&badge=0&autopause=0&player_id=0&app_id=58479"
+              title="VÍDEO VENDA - MENTORIA SUPREMUS"
             />
           </div>
         </section>
@@ -456,7 +487,7 @@ export default function SupremusPage() {
                 O acesso acontece mediante aplicação e análise de perfil.
               </p>
 
-              <div className="shiny-cta-wrapper w-full max-w-[550px] flex justify-center">
+              <div className="shiny-cta-wrapper w-full max-w-[420px] mx-auto">
                 <MentoriaModal />
               </div>
             </div>
