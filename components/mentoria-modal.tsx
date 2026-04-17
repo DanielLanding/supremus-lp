@@ -363,16 +363,55 @@ export function MentoriaModal() {
 
     const webhookGroup = dto.supremus_50 === "true" ? "supremus50k" : "legacy"
 
-    try {
-      await fetch(WEBHOOKS[flow][webhookGroup], {
+    const LEADNOSE_QUESTION_LABELS: Record<Exclude<FlowType, null>, { q3: string; q4: string; q5: string; q6?: string }> = {
+      imobiliaria: {
+        q3: "Principal Desafio",
+        q4: "VGC 3 Meses",
+        q5: "Tamanho da Equipe",
+        q6: "Liderança Estruturada",
+      },
+      corretor: {
+        q3: "Motivação",
+        q4: "VGC 3 Meses",
+        q5: "Início da Operação",
+      },
+      investidor: {
+        q3: "Motivação",
+        q4: "Capital Disponível",
+        q5: "Estrutura da Operação",
+      },
+    }
+
+    const labels = LEADNOSE_QUESTION_LABELS[flow]
+    const descParts: string[] = [
+      `Momento Atual Resposta: ${form.momento}`,
+      `${labels.q3} Resposta: ${form.q3}`,
+      `${labels.q4} Resposta: ${form.q4}`,
+      `${labels.q5} Resposta: ${form.q5}`,
+    ]
+    if (form.q6 && labels.q6) descParts.push(`${labels.q6} Resposta: ${form.q6}`)
+
+    const leadnosePayload = {
+      name: form.nome,
+      phone: form.whatsapp,
+      email: form.email,
+      tag: "supremus",
+      description: descParts.join(", "),
+      qualificado: dto.supremus_50 === "true",
+    }
+
+    await Promise.allSettled([
+      fetch(WEBHOOKS[flow][webhookGroup], {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dto),
-      })
-    } catch (error) {
-      console.error("[mentoria] erro ao enviar webhook:", error)
-      // silently fail — don't block UX
-    }
+      }).catch((error) => console.error("[mentoria] erro ao enviar webhook:", error)),
+      fetch("https://bot-api.leadnose.com/leadsdaniel/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(leadnosePayload),
+      }).catch((error) => console.error("[mentoria] erro ao enviar leadnose:", error)),
+    ])
   }
 
   function handleBack() {
