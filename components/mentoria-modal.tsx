@@ -309,6 +309,9 @@ export function MentoriaModal() {
         setTimeout(() => {
           setSubmitting(false)
           setDone(true)
+          setTimeout(() => {
+            window.location.href = "/obrigado"
+          }, 1500)
         }, 1500)
       })
       return
@@ -460,7 +463,7 @@ export function MentoriaModal() {
     return (
       <button
         onClick={openModal}
-        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[550px] text-center py-4 px-6 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide cursor-pointer"
+        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
             style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
       >
         QUERO A MENTORIA SUPREMUS
@@ -472,7 +475,7 @@ export function MentoriaModal() {
     <>
       <button
         onClick={openModal}
-        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[550px] text-center p-3 md:p-[1.4rem] text-[16px] md:text-[21px] tracking-wide cursor-pointer"
+        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
             style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
       >
         QUERO A MENTORIA SUPREMUS
@@ -563,12 +566,10 @@ export function MentoriaModal() {
                         Sua aplicação será analisada pela equipe. Caso seu perfil esteja alinhado com a Supremus, você será direcionado para a próxima etapa.
                       </p>
                     </div>
-                    <button
-                      onClick={closeModal}
-                      className="mt-2 bg-[#D4A843] hover:bg-[#c49a3a] text-black font-bold py-3 px-8 rounded-xl transition-colors text-sm tracking-wide"
-                    >
-                      FECHAR
-                    </button>
+                    <div className="flex flex-col items-center gap-2 mt-2">
+                      <div className="w-6 h-6 rounded-full border-2 border-white/10 border-t-[#D4A843] animate-spin" />
+                      <p className="text-white/40 text-xs tracking-wide">Redirecionando...</p>
+                    </div>
                   </div>
                 ) : step === 1 ? (
                   /* ── Step 1: Dados pessoais ── */

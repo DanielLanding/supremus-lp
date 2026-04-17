@@ -376,7 +376,7 @@ body.modal-open>*:not([data-modal-overlay]) {
   cursor: grab;
   user-select: none;
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 .sobre-fotos-carousel.active {
@@ -405,6 +405,21 @@ body.modal-open>*:not([data-modal-overlay]) {
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+/* ─── Scrollbar global ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a1a10;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a5c2a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a7a3a;
 }
 
 /* Utilitário para esconder scrollbar */
