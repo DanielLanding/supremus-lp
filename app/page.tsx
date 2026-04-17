@@ -168,7 +168,7 @@ export default function SupremusPage() {
         </div>
 
         {/* ─── SOBRE — O Que é o Supremus ─── */}
-        <section id="sobre" className="sobre-section py-16 md:py-32 relative z-10 -mt-[2px]">
+        <section id="sobre" className="sobre-section py-16 md:py-32 relative z-10 -mt-[2px]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
           <div className="w-full px-16 md:px-28">
             {/* Scroll icon */}
             <div className="flex justify-center mb-10">
@@ -180,33 +180,34 @@ export default function SupremusPage() {
               </div>
             </div>
 
+            <p className="sobre-label uppercase mb-4 text-[10px] md:text-sm">
+              O QUE É O SUPREMUS DO MERCADO IMOBILIÁRIO?
+            </p>
+
             <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16">
               {/* Left — heading */}
               <div className="md:w-1/2 shrink-0">
-                <p className="sobre-label uppercase mb-3 text-[10px] md:text-sm">
-                  O QUE É O SUPREMUS DO MERCADO IMOBILIÁRIO?
-                </p>
-                <h2 className="sobre-heading font-black leading-tight text-[14px] md:text-[24px]">
-                  A mentoria executiva que organiza, estrutura e eleva sua operação ao nível de uma máquina de vendas com autoridade, processos e equipe de alta performance
+                <h2 className="sobre-heading font-black leading-tight text-[13px] md:text-[21px]">
+                  A mentoria executiva que organiza, estrutura e eleva sua imobiliária ao nível de uma máquina de vendas com autoridade, processos e equipe de alta performance
                 </h2>
               </div>
 
               {/* Right — paragraphs */}
               <div className="flex-1">
-                <p className="sobre-lead text-[13px] md:text-[15px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
                   Na Supremus, o Altemir Rocha entra diretamente na sua operação e começa a mexer no que realmente impacta o seu faturamento.
                 </p>
-                <p className="sobre-lead text-[13px] md:text-[15px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
                   Já na primeira reunião, você sai com ajustes práticos e decisões que começam a refletir no resultado.
                 </p>
-                <p className="sobre-lead text-[13px] md:text-[15px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
                   Ao longo dos 12 meses, sua operação é organizada, estruturada e direcionada para crescer com consistência.
                 </p>
-                <p className="sobre-lead text-[13px] md:text-[15px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
                   Sem teoria de guru.<br />
                   Sem tentativa.
                 </p>
-                <p className="sobre-lead text-[13px] md:text-[15px] leading-relaxed font-semibold">
+                <p className="sobre-lead text-[12px] md:text-[13px] leading-relaxed font-semibold">
                   É método que funciona, treinamento aplicado e acompanhamento próximo.
                 </p>
               </div>
