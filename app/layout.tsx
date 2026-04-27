@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Montserrat, Dancing_Script, Poppins } from "next/font/google"
+import { Montserrat, Dancing_Script, Poppins, Inter } from "next/font/google"
 import Script from "next/script"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import "./globals.css"
@@ -16,9 +16,15 @@ const dancingScript = Dancing_Script({
   variable: "--font-dancing",
 })
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-inter",
+})
+
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
 })
 
@@ -50,7 +56,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={`${montserrat.variable} ${dancingScript.variable} ${poppins.variable} ${montserrat.className}`}>
+      <body className={`${montserrat.variable} ${inter.variable} ${dancingScript.variable} ${poppins.variable} ${montserrat.className}`}>
         <SmoothScroll />
         {children}
 
