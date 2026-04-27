@@ -142,16 +142,16 @@ export default function SupremusPage() {
                 <span className="tracking-wide uppercase">Mentoria Executiva - Com Altemir Rocha</span>
               </div>
               <h1 className="text-[16px] md:text-[23px] lg:text-[27px] font-black uppercase leading-[1.35] md:leading-[1.4] text-white text-center w-full mb-2 md:mb-3">
-                ESTRUTURE SUA OPERAÇÃO COM QUEM JÁ VENDEU MAIS DE{" "}
+                ESTRUTURE SUA IMOBILIÁRIA COM QUEM JÁ VENDEU MAIS DE{" "}
                 <span className="text-[#f4c264]">
                   R$ 2 BILHÕES
                 </span>{" "}
-                EM IMÓVEIS
+                EM IMÓVEIS.
               </h1>
               <p className="text-white/70 text-[12px] md:text-[14px] text-center w-full mb-3 md:mb-4 leading-relaxed">
-                12 MESES COM ALTEMIR ROCHA DENTRO DA SUA OPERAÇÃO. MENOS TEORIA. MAIS DIREÇÃO, AJUSTE E CRESCIMENTO REAL.
+                SUA IMOBILIÁRIA PODE FECHAR ATÉ 400% MAIS VENDAS NO PRÓXIMO SEMESTRE — SE TIVER MENOS TEORIA. MAIS DIREÇÃO, AJUSTE DE EQUIPE E CRESCIMENTO REAL.
               </p>
-              <MentoriaModal />
+              <MentoriaModal buttonText="PREENCHA A APLICAÇÃO SUPREMUS" />
             </div>
             <img
               src="/images/ibraciv_logo.png"
@@ -188,27 +188,32 @@ export default function SupremusPage() {
               {/* Left — heading */}
               <div className="md:w-1/2 shrink-0">
                 <h2 className="sobre-heading font-black leading-tight text-[13px] md:text-[21px]">
-                  A mentoria executiva que organiza, estrutura e eleva sua imobiliária ao nível de uma máquina de vendas com autoridade, processos e equipe de alta performance
+                  A mentoria imobiliária executiva que organiza, estrutura e eleva sua imobiliária ao nível de uma máquina de vendas com autoridade, processos e equipes de alta performance em atendimento e vendas.
                 </h2>
               </div>
 
               {/* Right — paragraphs */}
               <div className="flex-1">
                 <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
-                  Na Supremus, o Altemir Rocha entra diretamente na sua operação e começa a mexer no que realmente impacta o seu faturamento.
+                  Na Supremus, o Altemir Rocha entra diretamente na sua imobiliária e mexe no que realmente impacta o seu faturamento.
                 </p>
                 <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
-                  Já na primeira reunião, você sai com ajustes práticos e decisões que começam a refletir no resultado.
+                  Já na primeira reunião, você sai com ajustes práticos e decisões focadas na conversão imediata de vendas.
                 </p>
                 <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
-                  Ao longo dos 12 meses, sua operação é organizada, estruturada e direcionada para crescer com consistência.
+                  Ao longo dos 12 meses, sua operação é organizada, estruturada e direcionada para crescer com consistência, usando tecnologia e atendimento humanizado.
                 </p>
                 <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
-                  Sem teoria de guru.<br />
-                  Sem tentativa.
+                  Quer uma fila de corretores querendo estar na sua imobiliária?
+                </p>
+                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
+                  Quer corretores que vestem a camisa e fazem o que tem que ser feito?
+                </p>
+                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
+                  Quer ações que recuperam a base de clientes que estão comprando com outras imobiliárias embaixo do seu nariz?
                 </p>
                 <p className="sobre-lead text-[12px] md:text-[13px] leading-relaxed font-semibold">
-                  É método que funciona, treinamento aplicado e acompanhamento próximo.
+                  Aqui é um método personalizado que funciona, treinamento aplicado e acompanhamento próximo.
                 </p>
               </div>
             </div>
@@ -243,14 +248,14 @@ export default function SupremusPage() {
         <section className="cta-diferenciado pt-6 md:pt-8 pb-32 md:pb-[170px] relative z-10 px-6 -mt-[2px]">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 text-center md:text-left">
             <p className="text-gray-600 text-sm md:text-xl italic leading-relaxed max-w-[500px]">
-              "Chegou o seu momento de ser supremus no mercado imobiliário"
+              "Chegou o seu momento de ter os ganhos que o mercado pode te dar"
             </p>
             <a
               href="#hero"
               className="gold-metallic-btn rounded-xl font-bold block w-full md:w-auto text-center py-3 px-6 md:py-3.5 md:px-7 text-[12px] md:text-[14px] tracking-wide cursor-pointer flex-shrink-0 shadow-lg"
               style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
             >
-              QUERO A MENTORIA SUPREMUS
+              Quero a Aplicação da Supremus
             </a>
           </div>
         </section>
@@ -310,16 +315,16 @@ export default function SupremusPage() {
                   RESULTADO NÃO SE PROMETE. SE CONSTRÓI.
                 </p>
                 <h2 className="text-[1.75rem] md:text-[2.5rem] font-black text-gray-900 leading-[1.15]">
-                  Os resultados dos nossos mentorados são consistentes.
+                  Os nossos resultados são consistentes.
                 </h2>
               </div>
               <div className="md:w-1/2 md:pt-8">
                 <p className="text-gray-500 text-[15px] md:text-base leading-relaxed mb-4">
                   Somando o faturamento das operações acompanhadas ao longo da trajetória, já ultrapassamos a marca de
-                  <strong className="text-gray-800"> + R$ 1 Bilhão em vendas</strong> no mercado imobiliário.
+                  <strong className="text-gray-800"> + R$ 2 Bilhões em vendas</strong> no mercado imobiliário.
                 </p>
                 <p className="text-gray-500 text-[15px] md:text-base leading-relaxed">
-                  Crescimento construído com direção, método e aplicação real dentro do negócio.<br />
+                  Crescimento construído com direção e aplicação real na corretagem.<br />
                   Conheça a Supremus.
                 </p>
               </div>
@@ -419,9 +424,8 @@ export default function SupremusPage() {
                   ALINHAMENTO, DIREÇÃO E CRESCIMENTO<br />
                 </h2>
                 <p className="text-white/85 text-lg md:text-[1.1rem] leading-relaxed mb-8">
-                  Na Supremus, a atuação é direta.
-                  Eu acompanho sua operação, participo das decisões
-                  e ajudo você a estruturar um negócio que cresce com consistência. Menos tentativa, Mais direção
+                  Na Supremus, Altemir mexe na sua equipe mensalmente fazendo ela performar, batendo em vendas o que antes achavam inalcançável.<br /><br />
+                  Usa de diversas ações de recuperação de vendas automatizada e de conversão da sua equipe.
                 </p>
                 <div className="flex items-start gap-5 mb-6">
                   <img
@@ -482,14 +486,16 @@ export default function SupremusPage() {
                 Entre para a Mentoria Supremus
               </h2>
               <p className="text-gray-500 text-[15px] md:text-base leading-relaxed mb-4 max-w-lg mx-auto font-medium">
-                A Supremus é um programa para operações que já estão em movimento e precisam de direção para crescer com estrutura, consistência e escala.
+                A Supremus é um programa para:<br />
+                Quem quer abrir uma imobiliária do zero<br />
+                Quem já tem imobiliária em movimento e precisa de direção para escalar vendas e montar uma equipe vencedora.
               </p>
               <p className="text-gray-400 text-[15px] md:text-base leading-relaxed mb-10 max-w-lg mx-auto font-medium">
                 O acesso acontece mediante aplicação e análise de perfil.
               </p>
 
               <div className="shiny-cta-wrapper w-full max-w-[420px] mx-auto">
-                <MentoriaModal />
+                <MentoriaModal buttonText="QUERO A APLICAÇÃO SUPREMUS" />
               </div>
             </div>
           </div>
@@ -537,10 +543,10 @@ export default function SupremusPage() {
                   <strong className="text-white">mais de 55 mil pessoas</strong> em grandes palcos, tornando-se um dos nomes mais respeitados e ovacionados do mercado imobiliário.
                 </p>
                 <p>
-                  É reconhecido pelos próprios alunos como um dos principais responsáveis pela formação de corretores e imobiliárias de alta performance no país, com uma metodologia aplicada que transforma operações comuns em negócios estruturados, produtivos e lucrativos.
+                  É reconhecido pelos próprios alunos como o maior gerador de corretores de sucesso do país, com uma metodologia aplicada que transforma atendimentos e processos comuns em grandes conversores de fechamento.
                 </p>
                 <p>
-                  São mais de <strong className="text-white">5.000 alunos</strong> e diversos cases com resultados expressivos, incluindo operações que, em pouco tempo, ultrapassaram{" "}
+                  São mais de <strong className="text-white">7.000 alunos diretos</strong> e diversos casos com resultados expressivos, incluindo imobiliárias que, em pouco tempo, saíram de 10 milhões em vendas para{" "}
                   <strong className="text-white">R$ 149 milhões em vendas</strong>.
                 </p>
                 <p>

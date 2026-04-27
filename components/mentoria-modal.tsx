@@ -206,7 +206,7 @@ function getTotalSteps(flow: FlowType, form: FormData) {
 
 /* ─────────────────────────── Component ─────────────────────────── */
 
-export function MentoriaModal() {
+export function MentoriaModal({ buttonText = "PREENCHA A APLICAÇÃO SUPREMUS" }: { buttonText?: string } = {}) {
   const [open, setOpen] = useState(false)
   const [step, setStep] = useState(1)
   const [done, setDone] = useState(false)
@@ -466,7 +466,7 @@ export function MentoriaModal() {
         className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
             style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
       >
-        QUERO A MENTORIA SUPREMUS
+        {buttonText}
       </button>
     )
   }
@@ -478,7 +478,7 @@ export function MentoriaModal() {
         className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
             style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
       >
-        QUERO A MENTORIA SUPREMUS
+        {buttonText}
       </button>
 
       {createPortal(
