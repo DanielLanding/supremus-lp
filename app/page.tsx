@@ -7,6 +7,7 @@ import { WistiaVideo } from "@/components/wistia-video"
 import { MobileNav } from "@/components/mobile-nav"
 import { VimeoEmbed } from "@/components/vimeo-embed"
 import { MentoriaModal } from "@/components/mentoria-modal"
+import { TweetCarousel } from "@/components/tweet-carousel"
 
 
 const TESTIMONIALS = [
@@ -344,6 +345,12 @@ export default function SupremusPage() {
                 </div>
               ))}
             </div>
+
+          </div>
+
+          {/* Tweet carousel — depoimentos estilo X, full-width */}
+          <div className="-mx-6">
+            <TweetCarousel />
           </div>
         </section>
 

@@ -411,13 +411,16 @@ body.modal-open>*:not([data-modal-overlay]) {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0a1a10;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #1a5c2a;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #2a7a3a;
 }
@@ -803,13 +806,13 @@ body.modal-open>*:not([data-modal-overlay]) {
 /* ─── Gold metallic button ─── */
 .gold-metallic-btn {
   background: linear-gradient(135deg,
-    #b8860b 0%,
-    #d4a843 15%,
-    #f5d680 35%,
-    #ffe8a0 50%,
-    #f5d680 65%,
-    #d4a843 85%,
-    #b8860b 100%);
+      #b8860b 0%,
+      #d4a843 15%,
+      #f5d680 35%,
+      #ffe8a0 50%,
+      #f5d680 65%,
+      #d4a843 85%,
+      #b8860b 100%);
   background-size: 200% 200%;
   color: #1a0f00;
   text-shadow: 0 1px 1px rgba(255, 230, 150, 0.3);
@@ -831,24 +834,42 @@ body.modal-open>*:not([data-modal-overlay]) {
 }
 
 @keyframes gold-metallic-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* ─── Shiny CTA wrapper ─── */
 @keyframes shiny-cta-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 25px rgba(212, 168, 67, 0.2), 0 0 60px rgba(212, 168, 67, 0.06);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(212, 168, 67, 0.35), 0 0 90px rgba(212, 168, 67, 0.12);
   }
 }
 
 @keyframes shiny-cta-sweep {
-  0% { left: -100%; }
-  50% { left: 150%; }
-  100% { left: 150%; }
+  0% {
+    left: -100%;
+  }
+
+  50% {
+    left: 150%;
+  }
+
+  100% {
+    left: 150%;
+  }
 }
 
 .shiny-cta-wrapper {
@@ -857,12 +878,12 @@ body.modal-open>*:not([data-modal-overlay]) {
   animation: shiny-cta-glow 3s ease-in-out infinite;
 }
 
-.shiny-cta-wrapper > button {
+.shiny-cta-wrapper>button {
   position: relative;
   overflow: hidden;
 }
 
-.shiny-cta-wrapper > button::after {
+.shiny-cta-wrapper>button::after {
   content: '';
   position: absolute;
   top: 0;
@@ -872,6 +893,87 @@ body.modal-open>*:not([data-modal-overlay]) {
   background: linear-gradient(120deg, transparent 0%, rgba(255, 248, 200, 0.45) 50%, transparent 100%);
   animation: shiny-cta-sweep 4s ease-in-out infinite;
   pointer-events: none;
+}
+
+/* ─── Tweet Carousel ─── */
+@keyframes tweet-scroll-fwd {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes tweet-scroll-rev {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.tweet-carousel-outer {
+  margin-top: 4.5rem;
+  overflow: hidden;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  margin-bottom: -16px;
+}
+
+@media (min-width: 768px) {
+  .tweet-carousel-outer {
+    margin-top: 5.5rem;
+  }
+}
+
+.tweet-track {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+  will-change: transform;
+}
+
+.tweet-track--fwd {
+  animation: tweet-scroll-fwd 70s linear infinite;
+}
+
+.tweet-track--rev {
+  animation: tweet-scroll-rev 70s linear infinite;
+}
+
+.tweet-carousel-outer:hover .tweet-track {
+  animation-play-state: paused;
+}
+
+.tweet-card {
+  width: 360px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 20px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease;
+}
+
+.tweet-card:hover {
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+@media (min-width: 768px) {
+  .tweet-card {
+    width: 420px;
+    padding: 24px 24px 20px;
+  }
+
+  .tweet-track {
+    gap: 12px;
+  }
 }
 
 /* User JSON Spec Styles */
