@@ -172,12 +172,22 @@ function TweetCard({ tweet }: { tweet: (typeof TWEETS)[0] }) {
 
 export function TweetCarousel() {
   return (
-    <div className="tweet-carousel-outer">
-      <div className="tweet-track tweet-track--fwd">
-        {DOUBLED.map((tweet, i) => (
-          <TweetCard key={`fwd-${i}`} tweet={tweet} />
+    <>
+      {/* Desktop: horizontal scrolling carousel */}
+      <div className="tweet-carousel-outer tweet-carousel-desktop">
+        <div className="tweet-track tweet-track--fwd">
+          {DOUBLED.map((tweet, i) => (
+            <TweetCard key={`fwd-${i}`} tweet={tweet} />
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile: stacked vertical layout */}
+      <div className="tweet-stacked-mobile">
+        {TWEETS.map((tweet, i) => (
+          <TweetCard key={`stack-${i}`} tweet={tweet} />
         ))}
       </div>
-    </div>
+    </>
   )
 }
