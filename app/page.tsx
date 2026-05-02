@@ -150,9 +150,9 @@ export default function SupremusPage() {
                 EM IMÓVEIS.
               </h1>
               <p className="text-white/70 text-[12px] md:text-[14px] text-center w-full mb-3 md:mb-4 leading-relaxed">
-                SUA IMOBILIÁRIA PODE FECHAR ATÉ 400% MAIS VENDAS NO PRÓXIMO SEMESTRE — SE TIVER MENOS TEORIA. MAIS DIREÇÃO, AJUSTE DE EQUIPE E CRESCIMENTO REAL.
+                SUA IMOBILIÁRIA PODE FECHAR ATÉ 400% MAIS VENDAS NO PRÓXIMO SEMESTRE SE TIVER MENOS TEORIA. MAIS DIREÇÃO, AJUSTE DE EQUIPE E CRESCIMENTO REAL.
               </p>
-              <MentoriaModal buttonText="PREENCHA A APLICAÇÃO SUPREMUS" />
+              <MentoriaModal buttonText="VEJA SE A SUPREMUS É PARA VOCÊ" />
             </div>
             <img
               src="/images/ibraciv_logo.png"
@@ -202,7 +202,7 @@ export default function SupremusPage() {
                   Já na primeira reunião, você sai com ajustes práticos e decisões focadas na conversão imediata de vendas.
                 </p>
                 <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
-                  Ao longo dos 12 meses, sua operação é organizada, estruturada e direcionada para crescer com consistência, usando tecnologia e atendimento humanizado.
+                  Ao longo dos 12 meses, sua imobiliária é organizada, estruturada e direcionada para crescer com consistência, usando tecnologia e atendimento humanizado.
                 </p>
                 <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
                   Quer uma fila de corretores querendo estar na sua imobiliária?
@@ -293,7 +293,7 @@ export default function SupremusPage() {
           <div className="max-w-[1400px] w-full mx-auto text-center flex flex-col items-center relative z-10 px-6 mb-4 md:mb-6 shrink-0" style={{ transform: "translateY(0)" }}>
             <img src="/images/Supremus_logo.png" alt="Supremus" className="h-12 md:h-20 lg:h-24 w-auto object-contain mb-1" />
             <p className="text-white/70 text-[11px] md:text-sm uppercase tracking-wider font-semibold max-w-2xl mx-auto px-4">
-              O ponto onde sua operação começa a crescer de verdade
+              O ponto onde sua imobiliária começa a crescer de verdade
             </p>
           </div>
 
@@ -443,7 +443,7 @@ export default function SupremusPage() {
                   />
                   <div>
                     <p className="text-white/70 text-sm md:text-[15px] leading-relaxed">
-                      “Existe um próximo nível para a sua operação… e nós vamos construir isso juntos”
+                      “Existe um próximo nível para a sua imobiliária… e nós vamos construir isso juntos”
                     </p>
                   </div>
                 </div>

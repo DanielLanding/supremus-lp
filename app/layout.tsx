@@ -31,7 +31,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Supremus - Mentoria Imobiliária de Elite com Altemir Rocha | IBRACIV",
   description:
-    "A mentoria executiva que organiza e eleva sua operação imobiliária. Aprenda com Altemir Rocha a estratégia para vender mais de R$ 2 bilhões e escalar seu VGV.",
+    "A mentoria executiva que organiza e eleva sua imobiliária imobiliária. Aprenda com Altemir Rocha a estratégia para vender mais de R$ 2 bilhões e escalar seu VGV.",
   keywords: [
     "mentoria imobiliária",
     "Altemir Rocha",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Altemir Rocha" }],
   openGraph: {
     title: "Supremus - Mentoria Imobiliária de Elite com Altemir Rocha",
-    description: "Estruture sua operação imobiliária com quem já vendeu mais de R$ 2 bilhões.",
+    description: "Estruture sua imobiliária imobiliária com quem já vendeu mais de R$ 2 bilhões.",
     images: ["/images/Supremus_logo.png"],
   },
   icons: {

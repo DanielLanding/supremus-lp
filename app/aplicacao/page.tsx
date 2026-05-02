@@ -1,7 +1,7 @@
 "use client"
 
-import Link from "next/link"
 import { VimeoEmbed } from "@/components/vimeo-embed"
+import { MentoriaModal } from "@/components/mentoria-modal"
 
 export default function AplicacaoPage() {
   return (
@@ -60,7 +60,7 @@ export default function AplicacaoPage() {
 
             {/* Subtitle */}
             <p className="text-white/70 text-[11px] md:text-sm uppercase tracking-wider font-semibold max-w-2xl mx-auto px-2">
-              O ponto onde sua operação começa a crescer de verdade
+              O ponto onde sua imobiliária começa a crescer de verdade
             </p>
 
             {/* Stats pills — mobile only */}
@@ -86,7 +86,7 @@ export default function AplicacaoPage() {
           </div>
 
           {/* ─── VÍDEO ─── */}
-          <div className="w-full max-w-[1180px] mx-auto px-3 md:px-10 relative z-10 overflow-hidden">
+          <div className="video-aplicacao-wrapper w-full max-w-[1180px] mx-auto px-3 md:px-10 relative z-10 overflow-hidden">
             <VimeoEmbed
               videoUrl="https://player.vimeo.com/video/1183200112?h=55fe243ca9&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1"
               title="VÍDEO VENDA - MENTORIA SUPREMUS"
@@ -121,19 +121,8 @@ export default function AplicacaoPage() {
             </p>
 
             {/* Botão */}
-            <div className="shiny-cta-wrapper w-full">
-              <Link
-                href="/formulario"
-                className="gold-metallic-btn rounded-xl font-bold block w-full text-center py-4 px-8 text-[14px] md:text-[17px] tracking-wide"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)",
-                  backgroundSize: "200% 200%",
-                  color: "#1a0f00",
-                }}
-              >
-                PREENCHA A APLICAÇÃO SUPREMUS
-              </Link>
+            <div className="shiny-cta-wrapper w-full flex justify-center">
+              <MentoriaModal buttonText="VEJA SE A SUPREMUS É PARA VOCÊ" />
             </div>
 
             {/* IBRACIV badge — mobile only */}

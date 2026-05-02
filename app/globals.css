@@ -475,6 +475,14 @@ body.modal-open>*:not([data-modal-overlay]) {
   color: #fff;
 }
 
+/* Limita a largura do vídeo em desktop para que o botão fique sempre visível.
+   A fórmula garante que header (≈10rem) + vídeo + CTA (≈16rem) cabem em 100vh. */
+@media (min-width: 768px) {
+  .video-aplicacao-wrapper {
+    max-width: min(1180px, calc((100vh - 26rem) * 1.778));
+  }
+}
+
 /* ─── Resultados Section (white bg) ─── */
 .resultados-section {
   background: #f5f5f7;

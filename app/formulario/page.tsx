@@ -31,7 +31,7 @@ const MOMENTO_OPTIONS = [
   "Dono de imobiliária em crescimento",
   "Dono de imobiliária buscando escalar",
   "Corretor que quer abrir uma imobiliária",
-  "Corretor já estruturando sua própria operação",
+  "Corretor já estruturando sua própria imobiliária",
   "Investidor entrando no mercado imobiliário",
 ]
 
@@ -45,20 +45,20 @@ function getFlow(momento: string): FlowType {
 const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
   imobiliaria: [
     {
-      title: "Qual é o principal desafio da sua operação?",
+      title: "Qual é o principal desafio da sua imobiliária?",
       subtitle: "Escolha o ponto que mais limita o crescimento da sua imobiliária hoje.",
       field: "q3",
       options: [
         "Falta de previsibilidade no faturamento",
         "Dificuldade em formar e manter equipe produtiva",
-        "Operação desorganizada (processos, gestão e acompanhamento)",
+        "imobiliária desorganizada (processos, gestão e acompanhamento)",
         "Baixa conversão e geração de clientes",
         "Estou vendendo bem, mas travado para escalar",
       ],
     },
     {
       title: "Qual foi o volume gerado em comissões nos últimos 3 meses? (VGC)",
-      subtitle: "Considere o valor líquido da operação, já descontando as comissões dos corretores.",
+      subtitle: "Considere o valor líquido da imobiliária, já descontando as comissões dos corretores.",
       field: "q4",
       options: [
         "Até R$30 mil",
@@ -70,7 +70,7 @@ const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
     },
     {
       title: "Qual é o tamanho da sua equipe comercial?",
-      subtitle: "Considere os corretores ativos na sua operação hoje.",
+      subtitle: "Considere os corretores ativos na sua imobiliária hoje.",
       field: "q5",
       options: [
         "Não tenho equipe (atuo sozinho)",
@@ -90,7 +90,7 @@ const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
         "Não quero mais depender de outras imobiliárias",
         "Sinto que posso crescer mais e ganhar mais do que ganho hoje",
         "Quero construir algo meu dentro do mercado imobiliário",
-        "Já estou me organizando para abrir minha própria operação",
+        "Já estou me organizando para abrir minha própria imobiliária",
         "Já comecei a estruturar minha própria imobiliária",
       ],
     },
@@ -107,7 +107,7 @@ const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
       ],
     },
     {
-      title: "Como você pretende iniciar sua operação?",
+      title: "Como você pretende iniciar sua imobiliária?",
       subtitle: "Considere o que você já tem definido hoje.",
       field: "q5",
       options: [
@@ -128,11 +128,11 @@ const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
         "Quero diversificar meus investimentos",
         "Quero construir uma nova fonte de renda nesse mercado",
         "Já venho estudando como entrar nesse segmento",
-        "Já estou me organizando para iniciar uma operação",
+        "Já estou me organizando para iniciar uma imobiliária",
       ],
     },
     {
-      title: "Qual o capital disponível para investir na operação?",
+      title: "Qual o capital disponível para investir na imobiliária?",
       subtitle: "Considere o valor que pretende investir inicialmente.",
       field: "q4",
       options: [
@@ -144,15 +144,15 @@ const FLOW_STEPS: Record<Exclude<FlowType, null>, StepDef[]> = {
       ],
     },
     {
-      title: "Como você pretende estruturar sua operação imobiliária?",
+      title: "Como você pretende estruturar sua imobiliária imobiliária?",
       subtitle: "Considere o nível de estrutura que você imagina para iniciar.",
       field: "q5",
       options: [
         "Pretendo começar de forma enxuta, operando sem escritório",
         "Quero iniciar com estrutura simples e baixo custo",
-        "Pretendo montar uma operação com equipe e estrutura básica",
+        "Pretendo montar uma imobiliária com equipe e estrutura básica",
         "Quero montar uma imobiliária estruturada com escritório físico",
-        "Quero construir uma operação completa, com estrutura profissional desde o início",
+        "Quero construir uma imobiliária completa, com estrutura profissional desde o início",
       ],
     },
   ],
@@ -163,7 +163,7 @@ const LIDERANCA_STEP: StepDef = {
   subtitle: "Gerente ou coordenador responsável pela equipe.",
   field: "q6",
   options: [
-    "Não, eu mesmo gerencio toda a operação",
+    "Não, eu mesmo gerencio toda a imobiliária",
     "Sim, tenho um gerente ou coordenador responsável pela equipe",
   ],
 }
@@ -337,8 +337,8 @@ export default function FormularioPage() {
 
     const LEADNOSE_QUESTION_LABELS: Record<Exclude<FlowType, null>, { q3: string; q4: string; q5: string; q6?: string }> = {
       imobiliaria: { q3: "Principal Desafio", q4: "VGC 3 Meses", q5: "Tamanho da Equipe", q6: "Liderança Estruturada" },
-      corretor: { q3: "Motivação", q4: "VGC 3 Meses", q5: "Início da Operação" },
-      investidor: { q3: "Motivação", q4: "Capital Disponível", q5: "Estrutura da Operação" },
+      corretor: { q3: "Motivação", q4: "VGC 3 Meses", q5: "Início da imobiliária" },
+      investidor: { q3: "Motivação", q4: "Capital Disponível", q5: "Estrutura da imobiliária" },
     }
 
     const labels = LEADNOSE_QUESTION_LABELS[flow]
@@ -417,11 +417,11 @@ export default function FormularioPage() {
     if (done) return { title: "Aplicação realizada com sucesso!", subtitle: "" }
     if (step === 1) return {
       title: "Comece sua aplicação",
-      subtitle: "Responda com atenção. Vamos entender seu momento para avaliar se a Supremus faz sentido para sua operação.",
+      subtitle: "Responda com atenção. Vamos entender seu momento para avaliar se a Supremus faz sentido para sua imobiliária.",
     }
     if (step === 2) return {
       title: "Qual é o seu momento hoje?",
-      subtitle: "Isso nos ajuda a entender seu nível de operação e direcionar melhor a análise da sua aplicação.",
+      subtitle: "Isso nos ajuda a entender seu nível de imobiliária e direcionar melhor a análise da sua aplicação.",
     }
     if (currentFlowStep) return { title: currentFlowStep.title, subtitle: currentFlowStep.subtitle }
     return { title: "", subtitle: "" }
@@ -483,11 +483,11 @@ export default function FormularioPage() {
 
           {/* Headline */}
           <h2 className="text-[1.6rem] xl:text-[1.9rem] font-black text-white leading-[1.2] mb-5">
-            O ponto onde sua operação começa a crescer de verdade
+            O ponto onde sua imobiliária começa a crescer de verdade
           </h2>
 
           <p className="text-white/40 text-sm xl:text-[15px] leading-relaxed mb-10">
-            A Supremus é uma mentoria executiva que organiza, estrutura e eleva sua imobiliária ao nível de uma máquina de vendas — com autoridade, processos e equipes de alta performance.
+            A Supremus é uma mentoria executiva que organiza, estrutura e eleva sua imobiliária ao nível de uma máquina de vendas com autoridade, processos e equipes de alta performance.
           </p>
 
           {/* Stats */}
