@@ -188,7 +188,7 @@ export default function SupremusPage() {
             <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16">
               {/* Left — heading */}
               <div className="md:w-1/2 shrink-0">
-                <h2 className="sobre-heading font-black leading-tight text-[13px] md:text-[21px]">
+                <h2 className="sobre-heading font-black leading-snug md:leading-tight text-[17px] md:text-[21px] text-pretty">
                   A mentoria imobiliária executiva que organiza, estrutura e eleva sua imobiliária ao nível de uma máquina de vendas com autoridade, processos e equipes de alta performance em atendimento e vendas.
                 </h2>
               </div>
@@ -320,11 +320,11 @@ export default function SupremusPage() {
                 </h2>
               </div>
               <div className="md:w-1/2 md:pt-8">
-                <p className="text-gray-500 text-[15px] md:text-base leading-relaxed mb-4">
+                <p className="text-gray-900 text-[15px] md:text-base leading-relaxed mb-4">
                   Somando o faturamento das operações acompanhadas ao longo da trajetória, já ultrapassamos a marca de
-                  <strong className="text-gray-800"> + R$ 2 Bilhões em vendas</strong> no mercado imobiliário.
+                  <strong className="text-gray-900"> + R$ 2 Bilhões em vendas</strong> no mercado imobiliário.
                 </p>
-                <p className="text-gray-500 text-[15px] md:text-base leading-relaxed">
+                <p className="text-gray-900 text-[15px] md:text-base leading-relaxed">
                   Crescimento construído com direção e aplicação real na corretagem.<br />
                   Conheça a Supremus.
                 </p>
@@ -340,7 +340,7 @@ export default function SupremusPage() {
                   </div>
                   <div className="mt-5">
                     <h3 className="text-gray-900 font-bold text-[15px] md:text-base leading-snug">{t.name}</h3>
-                    <p className="text-gray-400 text-[13px] mt-2.5 leading-relaxed italic">{t.quote}</p>
+                    <p className="text-gray-900 text-[13px] mt-2.5 leading-relaxed italic">{t.quote}</p>
                   </div>
                 </div>
               ))}
