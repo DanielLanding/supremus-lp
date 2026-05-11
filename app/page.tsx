@@ -170,7 +170,7 @@ export default function SupremusPage() {
 
         {/* ─── SOBRE — O Que é o Supremus ─── */}
         <section id="sobre" className="sobre-section py-16 md:py-32 relative z-10 -mt-[2px]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
-          <div className="w-full px-16 md:px-28">
+          <div className="w-full px-6 md:px-28">
             {/* Scroll icon */}
             <div className="flex justify-center mb-10">
               <div className="scroll-icon text-gray-400">
@@ -185,35 +185,35 @@ export default function SupremusPage() {
               O QUE É O SUPREMUS DO MERCADO IMOBILIÁRIO?
             </p>
 
-            <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16">
+            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-16">
               {/* Left — heading */}
               <div className="md:w-1/2 shrink-0">
-                <h2 className="sobre-heading font-black leading-snug md:leading-tight text-[17px] md:text-[21px] text-pretty">
+                <h2 className="sobre-heading font-black leading-[1.15] md:leading-tight text-[26px] md:text-[21px] text-pretty tracking-tight md:tracking-normal">
                   A mentoria imobiliária executiva que organiza, estrutura e eleva sua imobiliária ao nível de uma máquina de vendas com autoridade, processos e equipes de alta performance em atendimento e vendas.
                 </h2>
               </div>
 
               {/* Right — paragraphs */}
               <div className="flex-1">
-                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
                   Na Supremus, o Altemir Rocha entra diretamente na sua imobiliária e mexe no que realmente impacta o seu faturamento.
                 </p>
-                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
                   Já na primeira reunião, você sai com ajustes práticos e decisões focadas na conversão imediata de vendas.
                 </p>
-                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
                   Ao longo dos 12 meses, sua imobiliária é organizada, estruturada e direcionada para crescer com consistência, usando tecnologia e atendimento humanizado.
                 </p>
-                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
                   Quer uma fila de corretores querendo estar na sua imobiliária?
                 </p>
-                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
                   Quer corretores que vestem a camisa e fazem o que tem que ser feito?
                 </p>
-                <p className="sobre-lead text-[12px] md:text-[13px] mb-2 leading-relaxed font-semibold">
+                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
                   Quer ações que recuperam a base de clientes que estão comprando com outras imobiliárias embaixo do seu nariz?
                 </p>
-                <p className="sobre-lead text-[12px] md:text-[13px] leading-relaxed font-semibold">
+                <p className="sobre-lead text-[14px] md:text-[13px] leading-relaxed font-normal md:font-semibold">
                   Aqui é um método personalizado que funciona, treinamento aplicado e acompanhamento próximo.
                 </p>
               </div>
