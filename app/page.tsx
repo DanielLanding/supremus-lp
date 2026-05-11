@@ -133,26 +133,24 @@ export default function SupremusPage() {
 
           {/* Content */}
           <div className="flex-1 flex flex-col items-center justify-end md:justify-center text-center px-4 md:px-6 py-8 md:py-12 relative z-10">
-            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-4 py-16 md:px-10 md:py-5 w-full max-w-[780px] shadow-lg">
+            <div className="bg-[#05070a]/40 md:bg-[#05070a]/15 backdrop-blur-[12px] md:backdrop-blur-[10px] backdrop-saturate-[120%] border border-white/10 rounded-2xl flex flex-col items-center relative z-10 mx-auto px-6 py-10 md:px-10 md:py-5 w-full max-w-[780px] shadow-lg">
               <img
                 src="/images/Supremus_logo.png"
                 alt="Supremus do Mercado Imobiliário"
-                className="w-28 md:w-[15rem] mb-2 md:mb-3"
+                className="w-28 md:w-[15rem] mb-6 md:mb-3"
               />
-              <div className="flex items-center gap-2 md:gap-3 text-[11px] md:text-[14px] text-white/90 mb-2 md:mb-3 font-medium">
-                <span className="tracking-wide uppercase">Mentoria Executiva - Com Altemir Rocha</span>
+              <div className="flex items-center gap-2 md:gap-3 text-[13px] md:text-[14px] text-white/90 mb-4 md:mb-3 font-semibold md:font-medium">
+                <span className="tracking-[0.15em] md:tracking-wide uppercase">Mentoria Executiva — Altemir Rocha</span>
               </div>
-              <h1 className="text-[16px] md:text-[23px] lg:text-[27px] font-black uppercase leading-[1.35] md:leading-[1.4] text-white text-center w-full mb-2 md:mb-3">
+              <h1 className="text-[19px] md:text-[23px] lg:text-[27px] font-black uppercase leading-[1.3] md:leading-[1.4] text-white text-center w-full mb-4 md:mb-3 text-balance md:text-wrap tracking-tight md:tracking-normal">
                 ESTRUTURE SUA IMOBILIÁRIA COM QUEM JÁ VENDEU MAIS DE{" "}
-                <span className="text-[#f4c264]">
-                  R$ 2 BILHÕES
-                </span>{" "}
+                <span className="text-[#f4c264] whitespace-nowrap">R$ 2 BILHÕES</span>{" "}
                 EM IMÓVEIS.
               </h1>
-              <p className="text-white/70 text-[12px] md:text-[14px] text-center w-full mb-3 md:mb-4 leading-relaxed">
+              <p className="text-white/90 text-[15px] md:text-[14px] text-center w-full mb-6 md:mb-4 leading-relaxed text-balance md:text-wrap font-medium md:font-normal">
                 SUA IMOBILIÁRIA PODE FECHAR ATÉ 400% MAIS VENDAS NO PRÓXIMO SEMESTRE SE TIVER MENOS TEORIA. MAIS DIREÇÃO, AJUSTE DE EQUIPE E CRESCIMENTO REAL.
               </p>
-              <MentoriaModal buttonText="VEJA SE A SUPREMUS É PARA VOCÊ" />
+              <MentoriaModal buttonText="VEJA SE A SUPREMUS É PARA VOCÊ" compact />
             </div>
             <img
               src="/images/ibraciv_logo.png"
@@ -169,7 +167,7 @@ export default function SupremusPage() {
         </div>
 
         {/* ─── SOBRE — O Que é o Supremus ─── */}
-        <section id="sobre" className="sobre-section py-16 md:py-32 relative z-10 -mt-[2px]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
+        <section id="sobre" className="sobre-section py-16 md:py-32 relative z-10 -mt-[2px]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
           <div className="w-full px-6 md:px-28">
             {/* Scroll icon */}
             <div className="flex justify-center mb-10">
@@ -181,39 +179,39 @@ export default function SupremusPage() {
               </div>
             </div>
 
-            <p className="sobre-label uppercase mb-4 text-[10px] md:text-sm">
+            <p className="sobre-label uppercase mb-4 text-[12px] md:text-sm font-bold md:font-semibold">
               O QUE É O SUPREMUS DO MERCADO IMOBILIÁRIO?
             </p>
 
             <div className="flex flex-col md:flex-row items-start gap-6 md:gap-16">
               {/* Left — heading */}
               <div className="md:w-1/2 shrink-0">
-                <h2 className="sobre-heading font-black leading-[1.15] md:leading-tight text-[26px] md:text-[21px] text-pretty tracking-tight md:tracking-normal">
+                <h2 className="sobre-heading font-black leading-[1.15] md:leading-tight text-[21px] md:text-[21px] text-balance md:text-wrap tracking-tight md:tracking-normal">
                   A mentoria imobiliária executiva que organiza, estrutura e eleva sua imobiliária ao nível de uma máquina de vendas com autoridade, processos e equipes de alta performance em atendimento e vendas.
                 </h2>
               </div>
 
               {/* Right — paragraphs */}
               <div className="flex-1">
-                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
+                <p className="sobre-lead text-[15px] md:text-[13px] mb-2 leading-relaxed font-medium md:font-semibold text-pretty md:text-wrap">
                   Na Supremus, o Altemir Rocha entra diretamente na sua imobiliária e mexe no que realmente impacta o seu faturamento.
                 </p>
-                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
+                <p className="sobre-lead text-[15px] md:text-[13px] mb-2 leading-relaxed font-medium md:font-semibold text-pretty md:text-wrap">
                   Já na primeira reunião, você sai com ajustes práticos e decisões focadas na conversão imediata de vendas.
                 </p>
-                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
+                <p className="sobre-lead text-[15px] md:text-[13px] mb-2 leading-relaxed font-medium md:font-semibold text-pretty md:text-wrap">
                   Ao longo dos 12 meses, sua imobiliária é organizada, estruturada e direcionada para crescer com consistência, usando tecnologia e atendimento humanizado.
                 </p>
-                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
+                <p className="sobre-lead text-[15px] md:text-[13px] mb-2 leading-relaxed font-medium md:font-semibold text-pretty md:text-wrap">
                   Quer uma fila de corretores querendo estar na sua imobiliária?
                 </p>
-                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
+                <p className="sobre-lead text-[15px] md:text-[13px] mb-2 leading-relaxed font-medium md:font-semibold text-pretty md:text-wrap">
                   Quer corretores que vestem a camisa e fazem o que tem que ser feito?
                 </p>
-                <p className="sobre-lead text-[14px] md:text-[13px] mb-3 md:mb-2 leading-relaxed font-normal md:font-semibold">
+                <p className="sobre-lead text-[15px] md:text-[13px] mb-2 leading-relaxed font-medium md:font-semibold text-pretty md:text-wrap">
                   Quer ações que recuperam a base de clientes que estão comprando com outras imobiliárias embaixo do seu nariz?
                 </p>
-                <p className="sobre-lead text-[14px] md:text-[13px] leading-relaxed font-normal md:font-semibold">
+                <p className="sobre-lead text-[15px] md:text-[13px] leading-relaxed font-medium md:font-semibold text-pretty md:text-wrap">
                   Aqui é um método personalizado que funciona, treinamento aplicado e acompanhamento próximo.
                 </p>
               </div>
@@ -292,7 +290,7 @@ export default function SupremusPage() {
           {/* Texts (Reduzidos para caber perfeitamente com o vídeo na tela) */}
           <div className="max-w-[1400px] w-full mx-auto text-center flex flex-col items-center relative z-10 px-6 mb-4 md:mb-6 shrink-0" style={{ transform: "translateY(0)" }}>
             <img src="/images/Supremus_logo.png" alt="Supremus" className="h-12 md:h-20 lg:h-24 w-auto object-contain mb-1" />
-            <p className="text-white/70 text-[11px] md:text-sm uppercase tracking-wider font-semibold max-w-2xl mx-auto px-4">
+            <p className="text-white/90 text-[13px] md:text-sm uppercase tracking-wider font-bold md:font-semibold max-w-2xl mx-auto px-4">
               O ponto onde sua imobiliária começa a crescer de verdade
             </p>
           </div>
@@ -320,11 +318,11 @@ export default function SupremusPage() {
                 </h2>
               </div>
               <div className="md:w-1/2 md:pt-8">
-                <p className="text-gray-900 text-[15px] md:text-base leading-relaxed mb-4">
+                <p className="text-gray-900 text-[16px] md:text-base leading-relaxed mb-4 font-medium md:font-normal">
                   Somando o faturamento das operações acompanhadas ao longo da trajetória, já ultrapassamos a marca de
                   <strong className="text-gray-900"> + R$ 2 Bilhões em vendas</strong> no mercado imobiliário.
                 </p>
-                <p className="text-gray-900 text-[15px] md:text-base leading-relaxed">
+                <p className="text-gray-900 text-[16px] md:text-base leading-relaxed font-medium md:font-normal">
                   Crescimento construído com direção e aplicação real na corretagem.<br />
                   Conheça a Supremus.
                 </p>
@@ -340,7 +338,7 @@ export default function SupremusPage() {
                   </div>
                   <div className="mt-5">
                     <h3 className="text-gray-900 font-bold text-[15px] md:text-base leading-snug">{t.name}</h3>
-                    <p className="text-gray-900 text-[13px] mt-2.5 leading-relaxed italic">{t.quote}</p>
+                    <p className="text-gray-900 text-[14px] md:text-[13px] mt-2.5 leading-relaxed italic font-medium md:font-normal">{t.quote}</p>
                   </div>
                 </div>
               ))}
@@ -424,13 +422,13 @@ export default function SupremusPage() {
 
               {/* Right — text */}
               <div className="md:w-1/2 flex flex-col justify-center">
-                <p className="text-[10px] md:text-sm font-bold tracking-[0.25em] uppercase mb-4 text-white/60">
+                <p className="text-[11px] md:text-sm font-bold tracking-[0.25em] uppercase mb-4 text-white/80">
                   MENTORIA EXECUTIVA, APLICADA NA PRÁTICA
                 </p>
                 <h2 className="text-[26px] md:text-5xl lg:text-[4rem] font-black uppercase mb-6 md:mb-8 leading-tight gold-shiny">
                   ALINHAMENTO, DIREÇÃO E CRESCIMENTO<br />
                 </h2>
-                <p className="text-white/85 text-lg md:text-[1.1rem] leading-relaxed mb-8">
+                <p className="text-white text-lg md:text-[1.1rem] leading-relaxed mb-8">
                   Na Supremus, Altemir mexe na sua equipe mensalmente fazendo ela performar, batendo em vendas o que antes achavam inalcançável.<br /><br />
                   Usa de diversas ações de recuperação de vendas automatizada e de conversão da sua equipe.
                 </p>
@@ -442,7 +440,7 @@ export default function SupremusPage() {
                     loading="lazy"
                   />
                   <div>
-                    <p className="text-white/70 text-sm md:text-[15px] leading-relaxed">
+                    <p className="text-white/90 text-[16px] md:text-[15px] leading-relaxed font-medium md:font-normal">
                       “Existe um próximo nível para a sua imobiliária… e nós vamos construir isso juntos”
                     </p>
                   </div>
@@ -486,18 +484,18 @@ export default function SupremusPage() {
           {/* Card flutuante */}
           <div className="relative z-10 flex w-full max-w-[800px] mx-auto justify-center mt-[-8vh] md:mt-[-20vh]">
             <div className="bg-white rounded-3xl p-6 md:p-14 text-center w-full shadow-[0_15px_60px_rgba(0,0,0,0.12)] flex flex-col items-center">
-              <p className="text-[11px] md:text-xs font-bold tracking-[0.2em] uppercase mb-4 text-gray-500">
+              <p className="text-[12px] md:text-xs font-bold tracking-[0.2em] uppercase mb-4 text-gray-700">
                 PROCESSO DE APLICAÇÃO
               </p>
               <h2 className="text-3xl md:text-[2.6rem] font-black text-gray-900 mb-6 tracking-tight leading-tight">
                 Entre para a Mentoria Supremus
               </h2>
-              <p className="text-gray-500 text-[15px] md:text-base leading-relaxed mb-4 max-w-lg mx-auto font-medium">
+              <p className="text-gray-800 text-[16px] md:text-base leading-relaxed mb-4 max-w-lg mx-auto font-medium">
                 A Supremus é um programa para:<br />
                 Quem quer abrir uma imobiliária do zero<br />
                 Quem já tem imobiliária em movimento e precisa de direção para escalar vendas e montar uma equipe vencedora.
               </p>
-              <p className="text-gray-400 text-[15px] md:text-base leading-relaxed mb-10 max-w-lg mx-auto font-medium">
+              <p className="text-gray-700 text-[16px] md:text-base leading-relaxed mb-10 max-w-lg mx-auto font-medium">
                 O acesso acontece mediante aplicação e análise de perfil.
               </p>
 
@@ -531,16 +529,16 @@ export default function SupremusPage() {
 
             {/* Bio — lado direito */}
             <div className="md:w-[55%] lg:w-[58%] flex flex-col justify-center px-6 md:px-14 lg:px-20 py-10 md:py-20 relative z-10">
-              <p className="text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-4 text-white/40">
+              <p className="text-[13px] md:text-sm font-bold tracking-[0.25em] uppercase mb-4 text-white/75">
                 QUEM É SEU MENTOR
               </p>
               <h2 className="text-2xl md:text-4xl lg:text-[2.8rem] font-black mb-3 leading-tight gold-shiny">
                 Altemir Rocha
               </h2>
-              <p className="text-white/60 text-base md:text-lg italic mb-8">
+              <p className="text-white/85 text-[18px] md:text-lg italic mb-8 font-medium md:font-normal">
                 O que ele ensina, ele já fez.
               </p>
-              <div className="space-y-5 text-white/75 text-[15px] md:text-base leading-relaxed">
+              <div className="space-y-5 text-white/90 text-[16px] md:text-base leading-relaxed font-medium md:font-normal">
                 <p>
                   Altemir Rocha construiu sua autoridade no mercado imobiliário aplicando, no campo, tudo aquilo que hoje direciona dentro da Supremus. Foi assim que ultrapassou{" "}
                   <strong className="text-white">R$ 2 bilhões em vendas</strong> ao longo da sua trajetória.
@@ -568,7 +566,7 @@ export default function SupremusPage() {
         {/* ─── IBRACIV SECTION ─── */}
         <section className="ibraciv-section py-16 md:py-24 px-6 border-t border-black/5">
           <div className="max-w-4xl mx-auto flex flex-col items-center">
-            <p className="text-gray-600 text-sm md:text-base leading-relaxed text-center italic mb-12">
+            <p className="text-gray-800 text-[16px] md:text-base leading-relaxed text-center italic mb-12 font-medium md:font-normal">
               Instituto Brasileiro de Aperfeiçoamento para Corretores, Imobiliárias e Vendedores –
               Uma escola completa e pronta para lhe ensinar, na prática, o que fazer para ter
               sucesso em todas as áreas da sua vida no mercado imobiliário, com o propósito de
@@ -586,7 +584,7 @@ export default function SupremusPage() {
 
       {/* ─── FOOTER ─── */}
       <footer className="site-footer py-8 px-6 text-center">
-        <p className="text-white/30 text-sm">
+        <p className="text-white/60 text-[14px] md:text-sm font-medium md:font-normal">
           ©Copyright 2026 | Todos os direitos reservados
         </p>
       </footer>

@@ -206,7 +206,10 @@ function getTotalSteps(flow: FlowType, form: FormData) {
 
 /* ─────────────────────────── Component ─────────────────────────── */
 
-export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ" }: { buttonText?: string } = {}) {
+export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ", compact = false }: { buttonText?: string; compact?: boolean } = {}) {
+  const triggerClasses = compact
+    ? "gold-metallic-btn rounded-xl font-bold block w-full max-w-[360px] text-center py-2.5 px-4 md:py-4 md:px-8 text-[12px] md:text-[17px] tracking-wide cursor-pointer"
+    : "gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
   const [open, setOpen] = useState(false)
   const [step, setStep] = useState(1)
   const [done, setDone] = useState(false)
@@ -463,7 +466,7 @@ export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ" 
     return (
       <button
         onClick={openModal}
-        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
+        className={triggerClasses}
             style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
       >
         {buttonText}
@@ -475,7 +478,7 @@ export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ" 
     <>
       <button
         onClick={openModal}
-        className="gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
+        className={triggerClasses}
             style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
       >
         {buttonText}

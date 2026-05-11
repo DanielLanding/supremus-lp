@@ -353,7 +353,13 @@ body.modal-open>*:not([data-modal-overlay]) {
 }
 
 .sobre-lead {
-  color: rgba(10, 10, 20, 0.75);
+  color: #000000;
+}
+
+@media (min-width: 768px) {
+  .sobre-lead {
+    color: rgba(10, 10, 20, 0.92);
+  }
 }
 
 .sobre-body {

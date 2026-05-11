@@ -10,12 +10,6 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 })
 
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-dancing",
-})
-
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "600"],
@@ -26,6 +20,12 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
+})
+
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-dancing",
 })
 
 export const metadata: Metadata = {
