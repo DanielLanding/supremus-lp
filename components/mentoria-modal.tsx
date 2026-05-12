@@ -206,10 +206,11 @@ function getTotalSteps(flow: FlowType, form: FormData) {
 
 /* ─────────────────────────── Component ─────────────────────────── */
 
-export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ", compact = false }: { buttonText?: string; compact?: boolean } = {}) {
-  const triggerClasses = compact
-    ? "gold-metallic-btn rounded-xl font-bold block w-full max-w-[360px] text-center py-2.5 px-4 md:py-4 md:px-8 text-[12px] md:text-[17px] tracking-wide cursor-pointer"
+export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ", compact = false, className }: { buttonText?: string; compact?: boolean; className?: string } = {}) {
+  const defaultClasses = compact
+    ? "gold-metallic-btn rounded-xl font-bold block w-full max-w-[360px] text-center py-2.5 px-4 md:py-3.5 md:px-7 text-[12px] md:text-[14px] tracking-wide cursor-pointer whitespace-nowrap"
     : "gold-metallic-btn rounded-xl font-bold block w-full max-w-[420px] text-center py-3 px-5 md:py-4 md:px-8 text-[14px] md:text-[17px] tracking-wide cursor-pointer"
+  const triggerClasses = className ?? defaultClasses
   const [open, setOpen] = useState(false)
   const [step, setStep] = useState(1)
   const [done, setDone] = useState(false)

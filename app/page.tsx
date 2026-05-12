@@ -249,13 +249,10 @@ export default function SupremusPage() {
             <p className="text-gray-600 text-sm md:text-xl italic leading-relaxed max-w-[500px]">
               "Chegou o seu momento de ter os ganhos que o mercado pode te dar"
             </p>
-            <a
-              href="#hero"
+            <MentoriaModal
+              buttonText="Quero a Aplicação da Supremus"
               className="gold-metallic-btn rounded-xl font-bold block w-full md:w-auto text-center py-3 px-6 md:py-3.5 md:px-7 text-[12px] md:text-[14px] tracking-wide cursor-pointer flex-shrink-0 shadow-lg"
-              style={{ background: "linear-gradient(135deg, #b8860b 0%, #d4a843 15%, #f5d680 35%, #ffe8a0 50%, #f5d680 65%, #d4a843 85%, #b8860b 100%)", backgroundSize: "200% 200%", color: "#1a0f00" }}
-            >
-              Quero a Aplicação da Supremus
-            </a>
+            />
           </div>
         </section>
 
