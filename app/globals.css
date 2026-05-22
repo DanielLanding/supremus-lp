@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
-/* ─── Modal blur ─── */
+/* ─── Modal open ─── */
+body.modal-open {
+  overflow: hidden;
+}
+
 body.modal-open>*:not([data-modal-overlay]) {
   filter: blur(6px) brightness(0.6);
   transition: filter 0.25s ease;

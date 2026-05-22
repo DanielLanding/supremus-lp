@@ -181,14 +181,26 @@ const SUPREMUS_50_TRUE: Partial<Record<Exclude<FlowType, null>, string[]>> = {
   investidor:  ["Entre R$50 mil e R$80 mil", "Entre R$80 mil e R$200 mil", "Entre R$200 mil e R$500 mil", "Acima de R$500 mil"],
 }
 
-/* ─────────────────────────── Helpers ─────────────────────────── */
+const COUNTRIES = [
+  { code: "BR", dial: "+55",  flag: "🇧🇷", name: "Brasil" },
+  { code: "US", dial: "+1",   flag: "🇺🇸", name: "EUA" },
+  { code: "PT", dial: "+351", flag: "🇵🇹", name: "Portugal" },
+  { code: "AR", dial: "+54",  flag: "🇦🇷", name: "Argentina" },
+  { code: "UY", dial: "+598", flag: "🇺🇾", name: "Uruguai" },
+  { code: "PY", dial: "+595", flag: "🇵🇾", name: "Paraguai" },
+  { code: "CL", dial: "+56",  flag: "🇨🇱", name: "Chile" },
+  { code: "CO", dial: "+57",  flag: "🇨🇴", name: "Colômbia" },
+  { code: "MX", dial: "+52",  flag: "🇲🇽", name: "México" },
+  { code: "ES", dial: "+34",  flag: "🇪🇸", name: "Espanha" },
+  { code: "IT", dial: "+39",  flag: "🇮🇹", name: "Itália" },
+  { code: "GB", dial: "+44",  flag: "🇬🇧", name: "Reino Unido" },
+  { code: "DE", dial: "+49",  flag: "🇩🇪", name: "Alemanha" },
+  { code: "FR", dial: "+33",  flag: "🇫🇷", name: "França" },
+  { code: "AO", dial: "+244", flag: "🇦🇴", name: "Angola" },
+  { code: "MZ", dial: "+258", flag: "🇲🇿", name: "Moçambique" },
+]
 
-function formatWhatsapp(value: string) {
-  const digits = value.replace(/\D/g, "").slice(0, 11)
-  if (digits.length <= 2) return digits
-  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
-}
+/* ─────────────────────────── Helpers ─────────────────────────── */
 
 function getSteps(flow: FlowType, form: FormData): StepDef[] {
   if (!flow) return []
@@ -222,6 +234,19 @@ export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ",
   })
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({})
   const bodyRef = useRef<HTMLDivElement>(null)
+  const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0])
+  const [showDialDropdown, setShowDialDropdown] = useState(false)
+  const dialRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dialRef.current && !dialRef.current.contains(e.target as Node)) {
+        setShowDialDropdown(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   const flow = getFlow(form.momento)
   const flowSteps = getSteps(flow, form)
@@ -254,7 +279,7 @@ export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ",
     if (!form.nome.trim()) e.nome = "Informe seu nome"
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       e.email = "Informe um e-mail válido"
-    if (form.whatsapp.replace(/\D/g, "").length < 10)
+    if (form.whatsapp.replace(/\D/g, "").length < 7)
       e.whatsapp = "Informe um WhatsApp válido"
     setErrors(e)
     return Object.keys(e).length === 0
@@ -328,7 +353,7 @@ export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ",
     const dto: Record<string, string> = {
       name: form.nome,
       email: form.email,
-      phone: form.whatsapp,
+      phone: `${selectedCountry.dial}${form.whatsapp.replace(/\D/g, "")}`,
       momento_atual: form.momento,
     }
 
@@ -400,7 +425,7 @@ export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ",
 
     const leadnosePayload = {
       name: form.nome,
-      phone: form.whatsapp,
+      phone: `${selectedCountry.dial}${form.whatsapp.replace(/\D/g, "")}`,
       email: form.email,
       tag: "supremus",
       description: descParts.join(", "),
@@ -602,13 +627,75 @@ export function MentoriaModal({ buttonText = "VEJA SE A SUPREMUS É PARA VOCÊ",
                     </div>
                     <div>
                       <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">WhatsApp</label>
-                      <input
-                        type="tel"
-                        placeholder="(00) 00000-0000"
-                        value={form.whatsapp}
-                        onChange={(e) => setForm((f) => ({ ...f, whatsapp: formatWhatsapp(e.target.value) }))}
-                        className={`w-full bg-white/5 border ${errors.whatsapp ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#D4A843]/60 transition-colors`}
-                      />
+                      <div className="flex gap-2">
+                        <div className="relative" ref={dialRef}>
+                          <button
+                            type="button"
+                            onClick={() => setShowDialDropdown((v) => !v)}
+                            className="flex items-center gap-1.5 bg-white/5 rounded-xl px-3 py-3 text-white outline-none whitespace-nowrap"
+                            style={{
+                              border: `1px solid ${errors.whatsapp ? "#ef4444" : "rgba(255,255,255,0.1)"}`,
+                              minWidth: "82px",
+                            }}
+                          >
+                            <span className="text-base leading-none">{selectedCountry.flag}</span>
+                            <span className="text-white/70 text-xs font-medium">{selectedCountry.dial}</span>
+                            <svg
+                              width="10" height="10" viewBox="0 0 24 24" fill="none"
+                              className="opacity-40 ml-auto transition-transform duration-200"
+                              style={{ transform: showDialDropdown ? "rotate(180deg)" : "rotate(0deg)" }}
+                            >
+                              <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                            </svg>
+                          </button>
+                          {showDialDropdown && (
+                            <div
+                              className="absolute top-full left-0 mt-1.5 rounded-xl overflow-y-auto shadow-2xl z-50"
+                              style={{
+                                background: "#0a1a0f",
+                                border: "1px solid rgba(255,255,255,0.12)",
+                                maxHeight: "190px",
+                                minWidth: "214px",
+                                scrollbarWidth: "thin",
+                                WebkitOverflowScrolling: "touch",
+                                overscrollBehavior: "contain",
+                              }}
+                              onMouseDown={(e) => e.stopPropagation()}
+                            >
+                              {COUNTRIES.map((country) => {
+                                const isSelected = country.code === selectedCountry.code
+                                return (
+                                  <button
+                                    key={country.code}
+                                    type="button"
+                                    onClick={() => { setSelectedCountry(country); setShowDialDropdown(false) }}
+                                    className="w-full flex items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors duration-100"
+                                    style={{ background: isSelected ? "rgba(255,255,255,0.08)" : "transparent" }}
+                                    onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.08)" }}
+                                    onMouseLeave={(e) => { e.currentTarget.style.background = isSelected ? "rgba(255,255,255,0.08)" : "transparent" }}
+                                  >
+                                    <span className="text-base">{country.flag}</span>
+                                    <span className="flex-1 text-white/80 text-xs">{country.name}</span>
+                                    <span className="text-white/40 text-xs font-medium">{country.dial}</span>
+                                  </button>
+                                )
+                              })}
+                            </div>
+                          )}
+                        </div>
+                        <input
+                          type="tel"
+                          inputMode="numeric"
+                          placeholder={selectedCountry.code === "BR" ? "(00) 00000-0000" : "Número"}
+                          maxLength={15}
+                          value={form.whatsapp}
+                          onChange={(e) => {
+                            const filtered = e.target.value.replace(/[^\d\s\-\(\)]/g, "").slice(0, 15)
+                            setForm((f) => ({ ...f, whatsapp: filtered }))
+                          }}
+                          className={`flex-1 bg-white/5 border ${errors.whatsapp ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#D4A843]/60 transition-colors`}
+                        />
+                      </div>
                       {errors.whatsapp && <p className="text-red-400 text-xs mt-1">{errors.whatsapp}</p>}
                     </div>
                   </div>

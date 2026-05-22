@@ -35,8 +35,18 @@ export function SmoothScroll() {
     }
     requestAnimationFrame(raf)
 
+    const observer = new MutationObserver(() => {
+      if (document.body.classList.contains("modal-open")) {
+        lenis.stop()
+      } else {
+        lenis.start()
+      }
+    })
+    observer.observe(document.body, { attributeFilter: ["class"] })
+
     return () => {
       document.removeEventListener("click", onClick)
+      observer.disconnect()
       lenis.destroy()
     }
   }, [])
